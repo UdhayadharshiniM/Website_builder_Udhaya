@@ -1492,11 +1492,11 @@
         #lockApp {
             --img-lock: url("https://picsum.photos/seed/love-lock/900/1800");
             --ink: #fff;
-            --soft: rgba(255, 255, 255, .72);
+            --soft: rgba(255, 255, 255, .74);
             --tint1: rgba(150, 20, 70, .45);
             --tint2: rgba(18, 3, 10, .82);
             --glass: rgba(255, 255, 255, .14);
-            --glass-b: rgba(255, 255, 255, .2);
+            --glass-b: rgba(255, 255, 255, .22);
             --key: rgba(255, 255, 255, .17);
             --key-on: rgba(255, 255, 255, .5);
             --rose: #ff5c85;
@@ -1541,8 +1541,7 @@
             position: fixed;
             inset: -10%;
             background: var(--img-lock) center/cover, linear-gradient(160deg, #a3194c, #2a0a18 60%, #8a4a3a);
-            filter: blur(50px) saturate(1.3) brightness(.6);
-            transition: filter .6s
+            filter: blur(50px) saturate(1.3) brightness(.6)
         }
 
         [data-theme=light] #lockApp .backdrop {
@@ -1574,28 +1573,10 @@
             transition: transform 1s cubic-bezier(.16, 1, .3, 1), opacity .9s, filter .9s
         }
 
-        @media(min-width:640px) {
-            #lockApp .phone {
-                width: 390px;
-                height: 844px;
-                border-radius: 56px;
-                transform: scale(var(--s, 1));
-                box-shadow: 0 0 0 11px #0b0206, 0 0 0 13px #4a2e3a, 0 50px 140px rgba(0, 0, 0, .65)
-            }
-
-            #lockApp .phone.leave {
-                transform: scale(calc(var(--s, 1)*1.25));
-                opacity: 0;
-                filter: blur(8px)
-            }
-        }
-
-        @media(max-width:639px) {
-            #lockApp .phone.leave {
-                transform: scale(1.25);
-                opacity: 0;
-                filter: blur(8px)
-            }
+        #lockApp .phone.leave {
+            transform: scale(1.2);
+            opacity: 0;
+            filter: blur(8px)
         }
 
         #lockApp .wall {
@@ -1618,49 +1599,6 @@
             }
         }
 
-        #lockApp .island {
-            position: absolute;
-            top: 11px;
-            left: 50%;
-            width: 118px;
-            height: 34px;
-            margin-left: -59px;
-            border-radius: 20px;
-            background: #000;
-            z-index: 10
-        }
-
-        #lockApp .status {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 54px;
-            padding: 18px 32px 0 36px;
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            font-size: 15px;
-            z-index: 9
-        }
-
-        #lockApp .status .ic {
-            display: flex;
-            gap: 6px;
-            align-items: center
-        }
-
-        @media(max-width:639px) {
-            #lockApp .island {
-                display: none
-            }
-
-            #lockApp .status {
-                height: 44px;
-                padding-top: 12px
-            }
-        }
-
         #lockApp .screen {
             position: absolute;
             inset: 0;
@@ -1671,7 +1609,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 78px;
+            padding-top: calc(env(safe-area-inset-top, 0px) + clamp(44px, 10vh, 96px));
             touch-action: none
         }
 
@@ -1679,7 +1617,7 @@
             width: 22px;
             height: 22px;
             color: var(--ink);
-            margin-bottom: 10px
+            margin-bottom: 14px
         }
 
         #lockApp .padlock .shackle {
@@ -1692,15 +1630,35 @@
             transform: translate(1px, -3px) rotate(22deg)
         }
 
+        #lockApp .gt {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 30px 20px;
+            border-radius: 38px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .28), rgba(255, 255, 255, .07));
+            border: 1px solid rgba(255, 255, 255, .32);
+            backdrop-filter: blur(22px) saturate(1.6);
+            -webkit-backdrop-filter: blur(22px) saturate(1.6);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(255, 255, 255, .08), 0 24px 60px rgba(0, 0, 0, .28);
+            animation: clockIn 1.2s cubic-bezier(.16, 1, .3, 1) both
+        }
+
+        [data-theme=light] #lockApp .gt {
+            background: linear-gradient(135deg, rgba(255, 255, 255, .75), rgba(255, 255, 255, .35));
+            border-color: rgba(255, 255, 255, .85);
+            box-shadow: inset 0 1px 0 #fff, 0 24px 60px rgba(224, 51, 92, .2)
+        }
+
         #lockApp .date {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 600;
             color: var(--soft);
             letter-spacing: .01em
         }
 
         #lockApp .clock {
-            font-size: clamp(86px, 25vw, 100px);
+            font-size: clamp(84px, 24vw, 100px);
             line-height: 1;
             font-weight: 700;
             letter-spacing: -3px;
@@ -1710,7 +1668,7 @@
             background-clip: text;
             color: transparent;
             font-variant-numeric: tabular-nums;
-            animation: clockIn 1.2s cubic-bezier(.16, 1, .3, 1) both
+            filter: drop-shadow(0 4px 14px rgba(0, 0, 0, .2))
         }
 
         @keyframes clockIn {
@@ -1725,7 +1683,7 @@
             position: absolute;
             left: 14px;
             right: 14px;
-            bottom: 150px;
+            bottom: calc(env(safe-area-inset-bottom, 0px) + 130px);
             display: grid;
             gap: 8px
         }
@@ -1739,15 +1697,7 @@
             border: 1px solid var(--glass-b);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            animation: noteIn 1s cubic-bezier(.16, 1, .3, 1) both
-        }
-
-        #lockApp .note:nth-child(1) {
-            animation-delay: .5s
-        }
-
-        #lockApp .note:nth-child(2) {
-            animation-delay: .7s
+            animation: noteIn 1s cubic-bezier(.16, 1, .3, 1) .5s both
         }
 
         @keyframes noteIn {
@@ -1795,7 +1745,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            padding: 0 40px 52px;
+            padding: 0 36px calc(env(safe-area-inset-bottom, 0px) + 34px);
             display: flex;
             align-items: center;
             justify-content: space-between
@@ -1851,21 +1801,11 @@
             }
         }
 
-        @media(max-width:639px) {
-            #lockApp .bottom {
-                padding-bottom: 38px
-            }
-
-            #lockApp .notes {
-                bottom: 130px
-            }
-        }
-
         #lockApp .pass {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 92px;
+            padding-top: calc(env(safe-area-inset-top, 0px) + 80px);
             opacity: 0;
             pointer-events: none;
             transform: scale(1.08);
@@ -1895,7 +1835,16 @@
             font-size: 21px;
             font-weight: 500;
             letter-spacing: .01em;
-            transition: opacity .3s
+            transition: opacity .3s;
+            text-align: center
+        }
+
+        #lockApp .psub {
+            display: none;
+            margin-top: .5rem;
+            font-size: .9rem;
+            color: var(--soft);
+            text-align: center
         }
 
         #lockApp .pdots {
@@ -1957,7 +1906,8 @@
             font-size: 13px;
             color: var(--soft);
             opacity: 0;
-            transition: opacity .4s
+            transition: opacity .4s;
+            text-align: center
         }
 
         #lockApp .hintTxt.on {
@@ -1972,14 +1922,14 @@
             margin-top: 22px
         }
 
-        @media(max-width:639px) and (max-height:720px) {
+        @media(max-height:720px) {
             #lockApp .pad {
                 --k: 64px;
                 gap: 12px 20px
             }
 
             #lockApp .pass {
-                padding-top: 60px
+                padding-top: calc(env(safe-area-inset-top, 0px) + 44px)
             }
         }
 
@@ -2027,7 +1977,8 @@
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
-            font-size: 16px
+            font-size: 16px;
+            min-height: 38px
         }
 
         #lockApp .pfoot button {
@@ -2111,6 +2062,127 @@
             100% {
                 opacity: 0;
                 transform: translate(var(--dx), var(--dy)) scale(1) rotate(var(--r))
+            }
+        }
+
+        @keyframes deskIn {
+            from {
+                opacity: 0;
+                transform: translateX(40px)
+            }
+        }
+
+        @media(min-width:900px) {
+            #lockApp .phone {
+                background: transparent
+            }
+
+            #lockApp .phone.leave {
+                transform: scale(1.06);
+                filter: blur(10px)
+            }
+
+            #lockApp .wall::after {
+                background: linear-gradient(90deg, var(--tint2), var(--tint1) 70%), radial-gradient(circle at 20% 100%, rgba(255, 92, 133, .35), transparent 60%)
+            }
+
+            #lockApp .lock {
+                inset: 0 auto 0 0;
+                width: 58%;
+                align-items: flex-start;
+                justify-content: center;
+                padding: 0 0 0 clamp(3rem, 8vw, 9rem);
+                touch-action: auto
+            }
+
+            #lockApp .padlock {
+                width: 26px;
+                height: 26px;
+                margin: 0 0 18px 8px
+            }
+
+            #lockApp .gt {
+                align-items: flex-start;
+                padding: 22px 46px 30px;
+                border-radius: 52px
+            }
+
+            #lockApp .date {
+                font-size: 24px
+            }
+
+            #lockApp .clock {
+                font-size: clamp(120px, 13vw, 200px);
+                letter-spacing: -.04em
+            }
+
+            #lockApp .notes {
+                position: static;
+                margin-top: 2rem;
+                width: min(430px, 100%)
+            }
+
+            #lockApp .bottom {
+                left: clamp(3rem, 8vw, 9rem);
+                right: auto;
+                bottom: 5vh;
+                padding: 0;
+                gap: 14px;
+                justify-content: flex-start
+            }
+
+            #lockApp .swipe {
+                display: none
+            }
+
+            #lockApp .pass,
+            #lockApp .phone.passing .pass {
+                inset: 0 clamp(2rem, 7vw, 7rem) 0 auto;
+                margin: auto 0;
+                height: fit-content;
+                width: clamp(340px, 28vw, 420px);
+                padding: 2.6rem 1.5rem 1.8rem;
+                opacity: 1;
+                pointer-events: auto;
+                transform: none;
+                border-radius: 40px;
+                background: linear-gradient(160deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, .06));
+                border: 1px solid var(--glass-b);
+                backdrop-filter: blur(34px) saturate(1.5);
+                -webkit-backdrop-filter: blur(34px) saturate(1.5);
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 40px 100px rgba(0, 0, 0, .35);
+                animation: deskIn 1.2s cubic-bezier(.16, 1, .3, 1) .35s both
+            }
+
+            [data-theme=light] #lockApp .pass,
+            [data-theme=light] #lockApp .phone.passing .pass {
+                background: linear-gradient(160deg, rgba(255, 255, 255, .8), rgba(255, 255, 255, .4))
+            }
+
+            #lockApp .phone.passing .lock {
+                transform: none;
+                opacity: 1;
+                pointer-events: auto
+            }
+
+            #lockApp .pass h2 {
+                font-family: "Playfair Display", Georgia, serif;
+                font-size: 2rem;
+                font-style: italic
+            }
+
+            #lockApp .psub {
+                display: block
+            }
+
+            #lockApp .pad {
+                --k: 68px;
+                gap: 14px 20px;
+                margin-top: 22px
+            }
+
+            #lockApp .key b {
+                font-size: 30px
             }
         }
 
@@ -2627,6 +2699,271 @@
                 grid-row: span 2
             }
         }
+
+        .frame {
+            border-radius: 28px;
+            will-change: border-radius
+        }
+
+        .frame .slide {
+            position: absolute;
+            inset: 0;
+            height: auto;
+            will-change: clip-path, filter, opacity
+        }
+
+        .twin {
+            position: relative;
+            -webkit-mask-image: none;
+            mask-image: none;
+            overflow: visible
+        }
+
+        .twin .chap {
+            position: absolute;
+            inset: 0;
+            height: auto
+        }
+
+        .chap-btn {
+            transition: box-shadow .5s, background .4s, color .4s, border-color .4s
+        }
+
+        .chap h3 {
+            perspective: 700px
+        }
+
+        .wm {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: top;
+            padding-bottom: .12em
+        }
+
+        .wi {
+            display: inline-block;
+            will-change: transform
+        }
+
+        .cw {
+            display: inline-block;
+            white-space: nowrap
+        }
+
+        .cx {
+            display: inline-block;
+            will-change: transform, opacity, filter
+        }
+
+        .w3 {
+            display: inline-block;
+            transform-origin: 50% 100%;
+            will-change: transform, opacity
+        }
+
+        .sprog b {
+            position: absolute;
+            left: 50%;
+            width: 9px;
+            height: 9px;
+            margin: -4.5px 0 0 -4.5px;
+            border-radius: 50%;
+            background: var(--bg2);
+            border: 1.5px solid var(--gold);
+            transition: background .5s, border-color .5s, transform .6s cubic-bezier(.34, 1.56, .64, 1)
+        }
+
+        .sprog b:nth-child(2) {
+            top: 0
+        }
+
+        .sprog b:nth-child(3) {
+            top: 33.3%
+        }
+
+        .sprog b:nth-child(4) {
+            top: 66.6%
+        }
+
+        .sprog b:nth-child(5) {
+            top: 100%
+        }
+
+        .sprog b.on {
+            background: var(--rose);
+            border-color: var(--rose);
+            transform: scale(1.5)
+        }
+
+        .g-meta {
+            position: absolute;
+            left: clamp(1.25rem, 6vw, 6rem);
+            right: clamp(1.25rem, 6vw, 6rem);
+            bottom: clamp(1.5rem, 5vh, 3rem);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--serif);
+            font-size: 1.3rem
+        }
+
+        .g-meta i {
+            flex: 1;
+            height: 1px;
+            background: var(--line);
+            position: relative
+        }
+
+        .g-meta b {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -.5px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--rose), var(--gold));
+            transform-origin: left;
+            transform: scaleX(0)
+        }
+
+        .g-meta span:last-child {
+            color: var(--muted)
+        }
+
+        .q-wrap {
+            clip-path: inset(0 50% 0 50%)
+        }
+
+        .q-slit {
+            position: absolute;
+            left: 50%;
+            top: 14%;
+            bottom: 14%;
+            width: 1px;
+            background: linear-gradient(transparent, var(--gold), transparent);
+            z-index: 3;
+            pointer-events: none
+        }
+
+        #finale {
+            height: 300vh;
+            height: 300svh;
+            min-height: 0;
+            display: block;
+            place-items: normal;
+            overflow: visible
+        }
+
+        .f-pin {
+            display: grid;
+            place-items: center;
+            width: 100%
+        }
+
+        .f-reveal,
+        .marq {
+            justify-self: stretch;
+            align-self: stretch
+        }
+
+        @media(min-width:900px) {
+            .sprog {
+                right: clamp(4.5rem, 7vw, 7rem)
+            }
+        }
+
+        .f-reveal {
+            position: absolute;
+            inset: 0;
+            clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)
+        }
+
+        .marq {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2vh;
+            pointer-events: none;
+            overflow: hidden
+        }
+
+        .mrow {
+            white-space: nowrap;
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(5rem, 15vw, 14rem);
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--line);
+            will-change: transform
+        }
+
+        .mrow.r2 {
+            font-size: clamp(4rem, 11vw, 10rem);
+            -webkit-text-stroke: 1px var(--rose2);
+            opacity: .55
+        }
+
+        .f-in {
+            z-index: 3;
+            will-change: transform, opacity;
+            opacity: 0
+        }
+
+        .pend {
+            min-height: 48vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.8rem
+        }
+
+        .nextup {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            text-align: left
+        }
+
+        .nring {
+            width: 58px;
+            height: 58px;
+            flex: none;
+            fill: none;
+            stroke-width: 2.5
+        }
+
+        .nring circle {
+            stroke: var(--line)
+        }
+
+        .nring .nf {
+            stroke: var(--rose);
+            stroke-linecap: round;
+            stroke-dasharray: 132;
+            stroke-dashoffset: 132;
+            transform: rotate(-90deg);
+            transform-origin: center
+        }
+
+        .nextup span {
+            display: block;
+            font-size: .68rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--gold)
+        }
+
+        .nextup strong {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(1.2rem, 3vw, 1.7rem)
+        }
     </style>
 </head>
 
@@ -2659,7 +2996,7 @@
         </div>
     </header>
     <nav class="dots" id="dots" aria-label="Sections"></nav>
-    <audio id="bgm" src="music.m4a" loop preload="auto"></audio>
+    <audio id="bgm" src="music.mp3" loop preload="auto"></audio>
     <div class="cur">
         <div class="cur-ring" id="ring"><svg viewBox="0 0 24 24">
                 <use href="#hrt" />
@@ -2675,38 +3012,16 @@
 
         <main class="phone" id="phone">
             <div class="wall"></div>
-            <div class="island"></div>
-            <div class="status">
-                <span id="stime">9:41</span>
-                <span class="ic">
-                    <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor">
-                        <rect x="0" y="8" width="3" height="4" rx="1" />
-                        <rect x="5" y="5.5" width="3" height="6.5" rx="1" />
-                        <rect x="10" y="3" width="3" height="9" rx="1" />
-                        <rect x="15" y="0" width="3" height="12" rx="1" />
-                    </svg>
-                    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round">
-                        <path d="M1.5 4.2a10 10 0 0 1 14 0M4 7a6.4 6.4 0 0 1 9 0" />
-                        <circle cx="8.5" cy="10" r="1.2" fill="currentColor" stroke="none" />
-                    </svg>
-                    <svg width="27" height="13" viewBox="0 0 27 13" fill="none">
-                        <rect x=".5" y=".5" width="22" height="12" rx="3.5" stroke="currentColor" opacity=".5" />
-                        <rect x="2" y="2" width="17" height="9" rx="2" fill="currentColor" />
-                        <path d="M24.5 4.5v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-                            opacity=".6" />
-                    </svg>
-                </span>
-            </div>
-
             <section class="screen lock" id="lock">
                 <svg class="padlock" id="padlock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2.2" stroke-linecap="round">
                     <path class="shackle" d="M7 11V8a5 5 0 0 1 10 0v3" />
                     <rect x="4.5" y="11" width="15" height="10" rx="2.5" fill="currentColor" stroke="none" />
                 </svg>
-                <div class="date" id="date"></div>
-                <div class="clock" id="clock">9:41</div>
+                <div class="gt">
+                    <div class="date" id="date"></div>
+                    <div class="clock" id="clock">9:41</div>
+                </div>
 
                 <div class="notes">
                     <div class="note">
@@ -2717,17 +3032,7 @@
                             <p>Good morning, beautiful. I made something just for you.</p>
                         </div>
                     </div>
-                    <div class="note">
-                        <div class="ni" style="background:linear-gradient(135deg,#ecc98c,#ff9a7a)"><svg
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round">
-                                <circle cx="12" cy="12" r="9" />
-                                <path d="M12 7v5l3 2" />
-                            </svg></div>
-                        <div style="flex:1"><b>Reminder</b><time>today</time>
-                            <p>Hint: the day our story began, DDMM.</p>
-                        </div>
-                    </div>
+
                 </div>
 
                 <div class="bottom">
@@ -2749,6 +3054,7 @@
 
             <section class="screen pass" id="pass" aria-hidden="true">
                 <h2 id="ptitle">Enter Passcode</h2>
+                <p class="psub">Four digits stand between you and our story.</p>
                 <div class="pdots" id="pdots"><i></i><i></i><i></i><i></i></div>
                 <p class="hintTxt" id="hintTxt">Hint: the day our story began, DDMM</p>
                 <div class="pad" id="pad"></div>
@@ -2808,60 +3114,55 @@
                     <div class="pic" style="--i:var(--img-c4)"></div>
                 </div>
                 <div class="story-grid">
-                    <div class="frame">
-                        <div class="track" id="iTrack">
-                            <div class="slide">
-                                <div class="pic" style="--i:var(--img-c1)"></div>
-                            </div>
-                            <div class="slide">
-                                <div class="pic" style="--i:var(--img-c2)"></div>
-                            </div>
-                            <div class="slide">
-                                <div class="pic" style="--i:var(--img-c3)"></div>
-                            </div>
-                            <div class="slide">
-                                <div class="pic" style="--i:var(--img-c4)"></div>
-                            </div>
+                    <div class="frame" id="frame">
+                        <div class="slide">
+                            <div class="pic" style="--i:var(--img-c1)"></div>
+                        </div>
+                        <div class="slide">
+                            <div class="pic" style="--i:var(--img-c2)"></div>
+                        </div>
+                        <div class="slide">
+                            <div class="pic" style="--i:var(--img-c3)"></div>
+                        </div>
+                        <div class="slide">
+                            <div class="pic" style="--i:var(--img-c4)"></div>
                         </div>
                         <div class="badge" id="badge">01 / 04</div>
                     </div>
                     <div class="twin">
-                        <div class="track" id="tTrack">
-                            <div class="chap"><span class="num">01</span>
-                                <h3>The first hello</h3>
-                                <p>It started with a smile across a crowded room and a heartbeat that forgot its rhythm.
-                                </p><button class="btn outline chap-btn" data-page="1">Open this chapter <svg
-                                        viewBox="0 0 24 24">
-                                        <path d="M5 12h14M13 6l6 6-6 6" />
-                                    </svg></button>
-                            </div>
-                            <div class="chap"><span class="num">02</span>
-                                <h3>Our first date</h3>
-                                <p>Cold coffee, warm conversation, and hours that felt like minutes.</p><button
-                                    class="btn outline chap-btn" data-page="2">Open this chapter <svg
-                                        viewBox="0 0 24 24">
-                                        <path d="M5 12h14M13 6l6 6-6 6" />
-                                    </svg></button>
-                            </div>
-                            <div class="chap"><span class="num">03</span>
-                                <h3>Late-night promises</h3>
-                                <p>Under city lights we spoke softly about everything and nothing &mdash; and I knew.
-                                </p><button class="btn outline chap-btn" data-page="3">Open this chapter <svg
-                                        viewBox="0 0 24 24">
-                                        <path d="M5 12h14M13 6l6 6-6 6" />
-                                    </svg></button>
-                            </div>
-                            <div class="chap"><span class="num">04</span>
-                                <h3>Home is you</h3>
-                                <p>Somewhere between the laughter and the quiet, you became my favourite place to be.
-                                </p><button class="btn outline chap-btn" data-page="4">Open this chapter <svg
-                                        viewBox="0 0 24 24">
-                                        <path d="M5 12h14M13 6l6 6-6 6" />
-                                    </svg></button>
-                            </div>
+                        <div class="chap"><span class="num">01</span>
+                            <h3>The first hello</h3>
+                            <p>It started with a smile across a crowded room and a heartbeat that forgot its rhythm.</p>
+                            <button class="btn outline chap-btn" data-page="1">Open this chapter <svg
+                                    viewBox="0 0 24 24">
+                                    <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg></button>
+                        </div>
+                        <div class="chap"><span class="num">02</span>
+                            <h3>Our first date</h3>
+                            <p>Cold coffee, warm conversation, and hours that felt like minutes.</p><button
+                                class="btn outline chap-btn" data-page="2">Open this chapter <svg viewBox="0 0 24 24">
+                                    <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg></button>
+                        </div>
+                        <div class="chap"><span class="num">03</span>
+                            <h3>Late-night promises</h3>
+                            <p>Under city lights we spoke softly about everything and nothing &mdash; and I knew.</p>
+                            <button class="btn outline chap-btn" data-page="3">Open this chapter <svg
+                                    viewBox="0 0 24 24">
+                                    <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg></button>
+                        </div>
+                        <div class="chap"><span class="num">04</span>
+                            <h3>Home is you</h3>
+                            <p>Somewhere between the laughter and the quiet, you became my favourite place to be.</p>
+                            <button class="btn outline chap-btn" data-page="4">Open this chapter <svg
+                                    viewBox="0 0 24 24">
+                                    <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg></button>
                         </div>
                     </div>
-                    <div class="sprog"><i id="sFill"></i></div>
+                    <div class="sprog"><i id="sFill"></i><b></b><b></b><b></b><b></b></div>
                 </div>
             </div>
         </section>
@@ -2873,6 +3174,7 @@
                     <h2>Moments we <em>kept</em></h2>
                     <p>Scroll through our little universe.</p>
                 </div>
+                <div class="g-meta"><span id="gCount">01</span><i><b id="gBar"></b></i><span>06</span></div>
                 <div class="g-track" id="gTrack">
                     <figure class="card">
                         <div class="pic" style="--i:var(--img-g1)"></div>
@@ -2903,6 +3205,7 @@
         </section>
 
         <section id="quote" data-t="Promise">
+            <i class="q-slit" id="qSlit"></i>
             <div class="q-wrap" id="qWrap">
                 <div class="pic" id="qBg" style="--i:var(--img-quote)"></div>
                 <div class="veil"></div>
@@ -3019,23 +3322,28 @@
         </section>
 
         <section id="finale" data-t="Forever">
-            <div class="pic" id="fBg" style="--i:var(--img-final)"></div>
-            <div class="veil"></div>
-            <svg class="bigheart" id="bigHeart" viewBox="0 0 24 24">
-                <path id="hPath"
-                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-            </svg>
-            <div class="f-in">
-                <span class="tag rv">The last chapter</span>
-                <h2 class="rv" style="--d:.1s">Will you stay with me, <em>forever</em>?</h2>
-                <p class="rv" style="--d:.2s">Today, tomorrow, and every sunrise after &mdash; I choose you, again and
-                    again.</p>
-                <div class="rv z" style="--d:.3s"><button class="btn" id="yes">Yes, always <svg viewBox="0 0 24 24">
-                            <use href="#hrt" />
-                        </svg></button></div>
-                <div class="thanks" id="thanks">You just made my whole world. I love you.</div>
+            <div class="pin f-pin">
+                <div class="f-reveal" id="fReveal">
+                    <div class="pic" id="fBg" style="--i:var(--img-final)"></div>
+                    <div class="veil"></div>
+                </div>
+                <div class="marq">
+                    <div class="mrow" id="m1">Forever &amp; Always &mdash; Forever &amp; Always &mdash; Forever &amp;
+                        Always &mdash; Forever &amp; Always &mdash;</div>
+                    <div class="mrow r2" id="m2">I choose you &mdash; I choose you &mdash; I choose you &mdash; I choose
+                        you &mdash; I choose you &mdash;</div>
+                </div>
+                <div class="f-in" id="fIn">
+                    <span class="tag">The last chapter</span>
+                    <h2>Will you stay with me, <em>forever</em>?</h2>
+                    <p>Today, tomorrow, and every sunrise after &mdash; I choose you, again and again.</p>
+                    <div><button class="btn" id="yes">Yes, always <svg viewBox="0 0 24 24">
+                                <use href="#hrt" />
+                            </svg></button></div>
+                    <div class="thanks" id="thanks">You just made my whole world. I love you.</div>
+                </div>
+                <footer>Made with all my heart</footer>
             </div>
-            <footer>Made with all my heart</footer>
         </section>
     </main>
 
@@ -3086,9 +3394,16 @@
                 </div>
             </div>
         </section>
-        <div class="pend"><button class="btn outline" data-close>Back to our story <svg viewBox="0 0 24 24">
+        <div class="pend">
+            <div class="nextup"><svg class="nring" viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="21" />
+                    <circle class="nf" cx="24" cy="24" r="21" />
+                </svg>
+                <div><span>Up next</span><strong>Chapter 02 &mdash; Our first date</strong></div>
+            </div><button class="btn outline" data-next>Continue now <svg viewBox="0 0 24 24">
                     <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg></button></div>
+                </svg></button>
+        </div>
     </div>
     <div class="page" id="page2" data-n="2" aria-label="Chapter 02">
         <div class="pbar">
@@ -3145,9 +3460,16 @@
                 </div>
             </div>
         </section>
-        <div class="pend"><button class="btn outline" data-close>Back to our story <svg viewBox="0 0 24 24">
+        <div class="pend">
+            <div class="nextup"><svg class="nring" viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="21" />
+                    <circle class="nf" cx="24" cy="24" r="21" />
+                </svg>
+                <div><span>Up next</span><strong>Chapter 03 &mdash; Late-night promises</strong></div>
+            </div><button class="btn outline" data-next>Continue now <svg viewBox="0 0 24 24">
                     <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg></button></div>
+                </svg></button>
+        </div>
     </div>
     <div class="page" id="page3" data-n="3" aria-label="Chapter 03">
         <div class="pbar">
@@ -3203,9 +3525,16 @@
                 <p class="lights-cap">City lights, quiet hearts</p>
             </div>
         </section>
-        <div class="pend"><button class="btn outline" data-close>Back to our story <svg viewBox="0 0 24 24">
+        <div class="pend">
+            <div class="nextup"><svg class="nring" viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="21" />
+                    <circle class="nf" cx="24" cy="24" r="21" />
+                </svg>
+                <div><span>Up next</span><strong>Chapter 04 &mdash; Home is you</strong></div>
+            </div><button class="btn outline" data-next>Continue now <svg viewBox="0 0 24 24">
                     <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg></button></div>
+                </svg></button>
+        </div>
     </div>
     <div class="page" id="page4" data-n="4" aria-label="Chapter 04">
         <div class="pbar">
@@ -3250,9 +3579,16 @@
                 <p class="p4-sub rv">And every day, I come home to you</p>
             </div>
         </section>
-        <div class="pend"><button class="btn outline" data-close>Back to our story <svg viewBox="0 0 24 24">
+        <div class="pend">
+            <div class="nextup"><svg class="nring" viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="21" />
+                    <circle class="nf" cx="24" cy="24" r="21" />
+                </svg>
+                <div><span>Up next</span><strong>Moments we kept</strong></div>
+            </div><button class="btn outline" data-next>Continue now <svg viewBox="0 0 24 24">
                     <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg></button></div>
+                </svg></button>
+        </div>
     </div>
     <div id="cover">
         <div class="blinds"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><svg class="hcover"
@@ -3277,16 +3613,11 @@
             function tick() {
                 if (!$('#clock')) return;
                 const d = new Date(), h = d.getHours() % 12 || 12, m = String(d.getMinutes()).padStart(2, '0');
-                $('#clock').textContent = h + ':' + m; $('#stime').textContent = h + ':' + m;
+                $('#clock').textContent = h + ':' + m;
                 $('#date').textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
             }
             tick(); setInterval(tick, 1000);
 
-            function fit() {
-                const s = Math.min(1, innerHeight * .94 / 844, innerWidth * .94 / 390);
-                phone.style.setProperty('--s', s);
-            }
-            fit(); addEventListener('resize', fit);
 
             const pal = ['#ff5c85', '#ff9db3', '#ecc98c', '#ffffff'];
             function heart(x, y, o = {}) {
@@ -3315,11 +3646,16 @@
                 for (let i = 0; i < 12; i++)setTimeout(() => heart(r.left + r.width / 2, r.top, { rise: 200, sp: 160 }), i * 50);
             });
 
+            const desk = () => matchMedia('(min-width:900px)').matches;
+            const amb = setInterval(() => {
+                if (!document.getElementById('lockApp')) return clearInterval(amb);
+                if (desk() && !document.hidden) heart(Math.random() * innerWidth, innerHeight + 10, { s: 10 + Math.random() * 20, rise: innerHeight * .8, sp: 260, t: 5.5 });
+            }, 700);
             function openPass() { phone.classList.add('passing'); $('#pass').setAttribute('aria-hidden', 'false') }
             function closePass() { phone.classList.remove('passing'); $('#pass').setAttribute('aria-hidden', 'true'); code = ''; render() }
 
             let sy = null, dy = 0;
-            lock.addEventListener('pointerdown', e => { if (e.target.closest('button')) return; sy = e.clientY; dy = 0; lock.style.transition = 'none' });
+            lock.addEventListener('pointerdown', e => { if (desk() || e.target.closest('button')) return; sy = e.clientY; dy = 0; lock.style.transition = 'none' });
             addEventListener('pointermove', e => {
                 if (sy === null) return;
                 dy = Math.min(0, e.clientY - sy);
@@ -3345,7 +3681,7 @@
 
             function render() {
                 dots.forEach((d, i) => d.classList.toggle('on', i < code.length));
-                cancel.textContent = code ? 'Delete' : 'Cancel';
+                cancel.textContent = code ? 'Delete' : (desk() ? '' : 'Cancel');
             }
             function press(d) {
                 if (busy || code.length >= 4) return;
@@ -3439,7 +3775,7 @@
             });
             const dotEls = $$('a', dotsNav);
 
-            let cur = scrollY, tar = scrollY, lastY = scrollY, vel = 0, current = null, busy = false, pushed = false, mainWas = false, pcur = 0, ptar = 0, pageLast = 0;
+            let cur = scrollY, tar = scrollY, lastY = scrollY, vel = 0, current = null, busy = false, pushed = false, mainWas = false, pcur = 0, ptar = 0, pageLast = 0, endHold = 0, advance = false, closeReq = false, lastNow = 0;
             const curPg = () => current ? document.getElementById('page' + current) : null;
             const maxY = () => document.documentElement.scrollHeight - innerHeight;
             if (smoothOn) {
@@ -3448,7 +3784,7 @@
                     e.preventDefault();
                     if (root.classList.contains('locked')) return;
                     const d = e.deltaMode === 1 ? 34 : e.deltaMode === 2 ? innerHeight : 1;
-                    if (current) { const pg = curPg(); ptar = clamp(ptar + e.deltaY * d, 0, pg.scrollHeight - pg.clientHeight); return }
+                    if (current) { const pg = curPg(), lim = pg.scrollHeight - pg.clientHeight; if (e.deltaY > 0 && ptar >= lim - 1) endHold = Math.min(1, endHold + e.deltaY * d / 1500); ptar = clamp(ptar + e.deltaY * d, 0, lim); return }
                     tar = clamp(tar + e.deltaY * d, 0, maxY());
                 }, { passive: false });
                 addEventListener('scroll', () => { if (Math.abs(scrollY - cur) > 2) { cur = tar = scrollY } });
@@ -3576,7 +3912,7 @@
                 if (current || busy) return;
                 busy = true; current = n;
                 const pg = $('#page' + n);
-                pg.scrollTop = 0; pcur = ptar = pageLast = 0;
+                pg.scrollTop = 0; pcur = ptar = pageLast = 0; endHold = 0;
                 $$('.rv', pg).forEach(el => { el.classList.remove('in'); io.observe(el) });
                 mainWas = mus.classList.contains('on');
                 if (mainWas) { mus.classList.remove('on'); fade(bgm, 0) }
@@ -3586,9 +3922,9 @@
                 await T[n](pg, x, y);
                 busy = false;
             }
-            async function closePage() {
+            async function closePage(adv) {
                 if (!current || busy) return;
-                busy = true; pushed = false;
+                busy = true; pushed = false; advance = false;
                 const n = current, pg = $('#page' + n);
                 fade(pAud[n], 0); $('.pmusic', pg).classList.remove('on');
                 const o = { duration: 900, easing: EZ, fill: 'forwards' };
@@ -3599,17 +3935,23 @@
                 await a.finished;
                 pg.classList.remove('open'); a.cancel();
                 root.classList.remove('page-open');
-                current = null; busy = false;
+                current = null; busy = false; closeReq = false; endHold = 0;
                 if (mainWas) musicOn();
+                if (adv) {
+                    const st = $('#story'), top = st.getBoundingClientRect().top + scrollY, sh = st.offsetHeight - innerHeight;
+                    const target = n < 4 ? top + sh * (n / (N - 1)) : $('#gallery').getBoundingClientRect().top + scrollY;
+                    setTimeout(() => goTo(target), 550);
+                }
             }
-            function requestClose() { if (!current || busy) return; if (pushed) history.back(); else closePage() }
-            addEventListener('popstate', () => { if (current) closePage() });
+            function requestClose(adv) { if (!current || busy || closeReq) return; closeReq = true; advance = adv === true; if (pushed) history.back(); else closePage(advance) }
+            addEventListener('popstate', () => { if (current) closePage(advance) });
             addEventListener('keydown', e => { if (e.key === 'Escape') requestClose() });
             $$('.chap-btn').forEach(b => b.addEventListener('click', e => {
                 const r = b.getBoundingClientRect();
                 openPage(+b.dataset.page, e.clientX || r.left + r.width / 2, e.clientY || r.top + r.height / 2);
             }));
-            $$('[data-close]').forEach(b => b.addEventListener('click', requestClose));
+            $$('[data-close]').forEach(b => b.addEventListener('click', () => requestClose(false)));
+            $$('[data-next]').forEach(b => b.addEventListener('click', () => requestClose(true)));
             $$('.pmusic').forEach(b => b.addEventListener('click', () => {
                 const n = +b.closest('.page').dataset.n;
                 if (b.classList.contains('on')) { b.classList.remove('on'); fade(pAud[n], 0) } else pagePlay(n);
@@ -3630,20 +3972,31 @@
 
             const heroBg = $('#heroBg'), heroIn = $('#heroIn'), hero = $('#hero');
             const archClip = $('#archClip'), archPic = $('#archPic'), arch = $('#arch'), wds = $$('.wd'), wordsEl = $('#words');
-            const story = $('#story'), iTrack = $('#iTrack'), tTrack = $('#tTrack'), chaps = $$('.chap'), slidePics = $$('.slide .pic'), bgPics = $$('#storyBg .pic'), badge = $('#badge'), sFill = $('#sFill');
+            const story = $('#story'), frameEl = $('#frame'), slides = $$('#frame .slide'), slidePics = slides.map(x => x.firstElementChild), chaps = $$('.twin .chap'), bgPics = $$('#storyBg .pic'), badge = $('#badge'), sFill = $('#sFill'), railDots = $$('.sprog b');
+            const parts = chaps.map(c => ({ num: $('.num', c), h3: $('h3', c), p: $('p', c), btn: $('.chap-btn', c) }));
+            const RAD = [[28, 28, 28, 28], [240, 240, 28, 28], [28, 240, 28, 240], [210, 210, 210, 210]];
+            (() => {
+                parts.forEach(pt => pt.h3.setAttribute('aria-label', pt.h3.textContent));
+                const w0 = parts[0].h3.textContent.split(' '), w1 = parts[1].h3.textContent.split(' '), w2 = parts[2].h3.textContent.split(' ');
+                parts[0].h3.innerHTML = w0.map(w => `<span class="wm"><span class="wi">${w}</span></span>`).join(' ');
+                parts[0].units = $$('.wi', parts[0].h3);
+                parts[1].h3.innerHTML = w1.map(w => `<span class="cw">${[...w].map(c => `<span class="cx">${c}</span>`).join('')}</span>`).join(' ');
+                parts[1].units = $$('.cx', parts[1].h3);
+                parts[2].h3.innerHTML = w2.map(w => `<span class="w3">${w}</span>`).join(' ');
+                parts[2].units = $$('.w3', parts[2].h3);
+            })();
             const gal = $('#gallery'), gTrack = $('#gTrack'), ghost = $('#ghost'), gHead = $('#gHead'), cards = $$('.card');
             const quote = $('#quote'), qWrap = $('#qWrap'), qBg = $('#qBg'), qLines = $$('#qText .ln span');
             const tl = $('#tl'), tlFill = $('#tlFill');
-            const fin = $('#finale'), fBg = $('#fBg'), hPath = $('#hPath'), bigHeart = $('#bigHeart');
+            const fin = $('#finale'), fReveal = $('#fReveal'), fBg = $('#fBg'), m1 = $('#m1'), m2 = $('#m2'), fIn = $('#fIn'), gCount = $('#gCount'), gBar = $('#gBar'), qSlit = $('#qSlit');
             const barFill = $('#barFill');
             const N = 4;
-            let pathLen = 0, activeDot = -1, lastHero = 0;
-            try { pathLen = hPath.getTotalLength() } catch (e) { pathLen = 80 }
-            hPath.style.strokeDasharray = pathLen; hPath.style.strokeDashoffset = pathLen;
+            let activeDot = -1, lastHero = 0;
 
             function pinProgress(sec, r) { return clamp(-r.top / Math.max(1, r.height - sec.firstElementChild.offsetHeight)) }
 
             function frame(now) {
+                const dt = Math.min(.05, Math.max(0, (now - lastNow) / 1000)); lastNow = now;
                 if (smoothOn) {
                     cur = lerp(cur, tar, .085);
                     if (Math.abs(tar - cur) < .15) cur = tar;
@@ -3672,12 +4025,18 @@
                     heart(Math.random() * vw, vh * (Math.random() > .5 ? .85 : .2), { rise: 100, sp: 60, s: 12 + Math.random() * 12 });
                 }
 
-                if (pg) { pageFx(pg, vh); requestAnimationFrame(frame); return }
+                if (pg) {
+                    const lim = pg.scrollHeight - pg.clientHeight, atEnd = lim > 0 && pg.scrollTop >= lim - 8;
+                    if (atEnd && !busy && !closeReq) endHold = Math.min(1, endHold + dt / 2.6); else if (!atEnd) endHold = Math.max(0, endHold - dt / .7);
+                    const nf = $('.nf', pg); if (nf) nf.style.strokeDashoffset = 132 * (1 - endHold);
+                    if (endHold >= 1 && !busy && !closeReq) requestClose(true);
+                    pageFx(pg, vh); requestAnimationFrame(frame); return
+                }
 
                 if (y < vh * 1.4) {
                     hero.style.visibility = '';
                     const p = clamp(y / vh);
-                    heroBg.style.transform = `translate3d(0,${y * .3}px,0) scale(${1 + p * .2})`;
+                    heroBg.style.transform = `translate3d(${(.5 - rx / vw) * 34}px,${y * .3 + (.5 - ry / vh) * 22}px,0) scale(${1 + p * .2})`;
                     heroIn.style.transform = `translate3d(0,${-p * 130}px,0) scale(${1 - p * .08})`;
                     heroIn.style.opacity = clamp(1 - p * 1.35);
                     if (now - lastHero > 520 && !reduce && root.classList.contains('go')) { lastHero = now; heart(Math.random() * vw, vh + 10, { s: 10 + Math.random() * 22, rise: -(vh * .55 + Math.random() * vh * .4), dx: (Math.random() - .5) * 160, dy: -(vh * .5 + Math.random() * vh * .4), t: 5 }) }
@@ -3698,18 +4057,35 @@
                 const sr = story.getBoundingClientRect();
                 if (sr.top < vh && sr.bottom > 0) {
                     const sp = pinProgress(story, sr), t = sp * (N - 1), i = Math.min(N - 2, Math.floor(t)), f = t - i;
-                    const pos = i + smooth(clamp((f - .22) / .56));
-                    const tf = `translate3d(0,${-pos / N * 100}%,0)`;
-                    iTrack.style.transform = tf; tTrack.style.transform = tf;
-                    for (let k = 0; k < N; k++) {
-                        const d = Math.abs(pos - k);
-                        slidePics[k].style.transform = `scale(${1 + Math.min(d, 1) * .22})`;
-                        chaps[k].style.opacity = clamp(1 - d * 1.5);
-                        chaps[k].style.transform = `translate3d(${Math.min(d, 1) * 40}px,0,0)`;
-                        bgPics[k].style.opacity = clamp(1 - d);
-                    }
+                    const pos = i + smooth(clamp((f - .2) / .6));
+                    const T = k => k === 0 ? 1 : smooth(clamp(pos - (k - 1)));
+                    slides.forEach((sl, k) => {
+                        const tk = T(k), tn = k < N - 1 ? T(k + 1) : 0;
+                        let sc = 1, tx = 0, rot = 0, cp = 'none', mk = 'none', fl = 'none', op = 1;
+                        if (k === 1) { const X = tk * 135; cp = tk >= 1 ? 'none' : `polygon(0 0,${X}% 0,${X - 35}% 100%,0 100%)`; sc = 1.28 - .28 * tk; tx = -(1 - tk) * 60 }
+                        if (k === 2) { op = tk; sc = 1.5 - .5 * tk; fl = tk >= 1 ? 'none' : `blur(${(1 - tk) * 14}px) saturate(${1 + (1 - tk) * .7})` }
+                        if (k === 3) { const a = tk * 360; mk = tk >= 1 ? 'none' : `conic-gradient(#000 ${a}deg,transparent ${a}deg)`; sc = 1.2 - .2 * tk; rot = (1 - tk) * 5 }
+                        slidePics[k].style.transform = `translate3d(${tx}px,0,0) scale(${sc * (1 + .2 * tn)}) rotate(${rot}deg)`;
+                        sl.style.clipPath = cp; sl.style.webkitMaskImage = mk; sl.style.maskImage = mk; sl.style.filter = fl; sl.style.opacity = op;
+                    });
+                    const ri = Math.min(N - 2, Math.floor(pos)), rf = pos - ri;
+                    frameEl.style.borderRadius = RAD[ri].map((v, c) => lerp(v, RAD[ri + 1][c], rf) + 'px').join(' ');
+                    parts.forEach((pt, k) => {
+                        const e = 1 - clamp(Math.abs(pos - k) * 1.7), sg = pos < k ? 1 : -1, ep = clamp((e - .3) / .7);
+                        chaps[k].style.visibility = e <= .001 ? 'hidden' : 'visible';
+                        chaps[k].style.pointerEvents = e > .7 ? 'auto' : 'none';
+                        pt.num.style.transform = `translate3d(0,${sg * (1 - e) * 70}px,0)`; pt.num.style.opacity = e * .8;
+                        pt.p.style.opacity = ep; pt.p.style.transform = `translate3d(0,${sg * (1 - ep) * 30}px,0)`;
+                        pt.btn.style.opacity = ep; pt.btn.style.transform = `translate3d(0,${sg * (1 - ep) * 40}px,0) scale(${.92 + .08 * ep})`;
+                        if (k === 0) pt.units.forEach((u, n) => { const we = clamp(e * 1.6 - n * .2); u.style.transform = `translate3d(0,${sg * (1 - we) * 115}%,0)` });
+                        if (k === 1) pt.units.forEach((u, n) => { const ce = clamp(e * 2 - n * .05); u.style.opacity = ce; u.style.filter = `blur(${(1 - ce) * 10}px)`; u.style.transform = `translate3d(${sg * (1 - ce) * 26}px,0,0)` });
+                        if (k === 2) pt.units.forEach((u, n) => { const we = clamp(e * 1.6 - n * .2); u.style.opacity = we; u.style.transform = `rotateX(${sg * (1 - we) * 95}deg) translate3d(0,${sg * (1 - we) * 18}px,0)` });
+                        if (k === 3) { pt.h3.style.clipPath = `inset(0 ${(1 - e) * 50}% 0 ${(1 - e) * 50}%)`; pt.h3.style.letterSpacing = `${(1 - e) * .18}em`; pt.h3.style.opacity = e }
+                    });
+                    bgPics.forEach((bp, k) => { bp.style.opacity = clamp(1 - Math.abs(pos - k)) });
                     badge.textContent = String(Math.round(pos) + 1).padStart(2, '0') + ' / 0' + N;
                     sFill.style.transform = `scaleY(${sp})`;
+                    railDots.forEach((d, k) => d.classList.toggle('on', k <= Math.round(pos)));
                 }
 
                 const gr = gal.getBoundingClientRect();
@@ -3719,17 +4095,22 @@
                     ghost.style.transform = `translate3d(${gx * .35}px,-50%,0)`;
                     gHead.style.transform = `translate3d(${-gp * 260}px,0,0)`;
                     gHead.style.opacity = clamp(1 - gp * 4);
-                    cards.forEach(c => {
+                    const sk = clamp(vel * .12, -9, 9); let near = 0, nd = 9;
+                    cards.forEach((c, ci) => {
                         const d = (c.offsetLeft + c.offsetWidth / 2 + gx - vw / 2) / vw;
-                        c.style.transform = `translate3d(0,${Math.abs(d) * 44}px,0) rotate(${d * 7}deg) scale(${1 - Math.min(Math.abs(d), 1) * .1})`;
+                        if (Math.abs(d) < nd) { nd = Math.abs(d); near = ci }
+                        c.style.transform = `translate3d(0,${Math.abs(d) * 44}px,0) rotate(${d * 7}deg) skewX(${-sk}deg) scale(${1 - Math.min(Math.abs(d), 1) * .1})`;
                         c.firstElementChild.style.transform = `translate3d(${-d * 70}px,0,0)`;
                     });
+                    gCount.textContent = String(near + 1).padStart(2, '0'); gBar.style.transform = `scaleX(${gp})`;
                 }
 
                 const qr = quote.getBoundingClientRect();
                 if (qr.top < vh && qr.bottom > 0) {
                     const qp = clamp((vh - qr.top) / (vh * .9));
-                    qWrap.style.clipPath = `circle(${ease(qp) * 78}% at 50% 50%)`;
+                    const qe = ease(qp);
+                    qWrap.style.clipPath = `inset(0 ${(1 - qe) * 50}% 0 ${(1 - qe) * 50}% round ${(1 - qe) * 70}px)`;
+                    qSlit.style.opacity = clamp(1.2 - qe * 1.6); qSlit.style.transform = `scaleY(${.3 + .7 * clamp(qp * 2.5)})`;
                     qBg.style.transform = `translate3d(0,${-qr.top * .14}px,0) scale(${1.25 - qp * .15})`;
                     const lp = clamp((qp - .4) / .5);
                     qLines.forEach((l, k) => { l.style.transform = `translate3d(0,${(1 - ease(clamp(lp * 3 - k))) * 108}%,0)` });
@@ -3740,11 +4121,14 @@
 
                 const fr = fin.getBoundingClientRect();
                 if (fr.top < vh && fr.bottom > 0) {
-                    const fp = clamp((vh - fr.top) / (vh * 1.1));
-                    fBg.style.transform = `scale(${1.4 - .4 * ease(fp)})`;
-                    hPath.style.strokeDashoffset = pathLen * (1 - clamp((fp - .1) / .6));
-                    hPath.style.fillOpacity = clamp((fp - .72) / .28) * .32;
-                    bigHeart.classList.toggle('beat', fp > .97);
+                    const fp = pinProgress(fin, fr), k = ease(clamp(fp / .55)) * 2.05;
+                    fReveal.style.clipPath = `polygon(50% ${50 - k * 50}%,${50 + k * 50}% 50%,50% ${50 + k * 50}%,${50 - k * 50}% 50%)`;
+                    fBg.style.transform = `scale(${1.35 - .35 * ease(clamp(fp / .8))})`;
+                    m1.style.transform = `translate3d(${-fp * 38}%,0,0)`;
+                    m2.style.transform = `translate3d(${-48 + fp * 38}%,0,0)`;
+                    const ct = clamp((fp - .55) / .3);
+                    fIn.style.opacity = ct; fIn.style.transform = `translate3d(0,${(1 - ct) * 50}px,0) scale(${.94 + .06 * ct})`;
+                    fIn.style.pointerEvents = ct > .6 ? 'auto' : 'none';
                 }
 
                 let ad = 0;
