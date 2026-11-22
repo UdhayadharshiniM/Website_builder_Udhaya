@@ -1,246 +1,2839 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" class="locked">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <title>Forever &amp; Always</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <script>
+        (() => {
+            let t; try { t = localStorage.getItem('loveTheme') } catch (e) { }
+            if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            document.documentElement.dataset.theme = t;
+        })();
+    </script>
+    <style>
+        :root {
+            --img-hero: url("https://picsum.photos/seed/love-hero/1920/1200");
+            --img-intro: url("https://picsum.photos/seed/love-intro/900/1200");
+            --img-c1: url("https://picsum.photos/seed/love-c1/900/1200");
+            --img-c2: url("https://picsum.photos/seed/love-c2/900/1200");
+            --img-c3: url("https://picsum.photos/seed/love-c3/900/1200");
+            --img-c4: url("https://picsum.photos/seed/love-c4/900/1200");
+            --img-g1: url("https://picsum.photos/seed/love-g1/700/900");
+            --img-g2: url("https://picsum.photos/seed/love-g2/700/900");
+            --img-g3: url("https://picsum.photos/seed/love-g3/700/900");
+            --img-g4: url("https://picsum.photos/seed/love-g4/700/900");
+            --img-g5: url("https://picsum.photos/seed/love-g5/700/900");
+            --img-g6: url("https://picsum.photos/seed/love-g6/700/900");
+            --img-quote: url("https://picsum.photos/seed/love-quote/1920/1200");
+            --img-t1: url("https://picsum.photos/seed/love-t1/800/500");
+            --img-t2: url("https://picsum.photos/seed/love-t2/800/500");
+            --img-t3: url("https://picsum.photos/seed/love-t3/800/500");
+            --img-t4: url("https://picsum.photos/seed/love-t4/800/500");
+            --img-final: url("https://picsum.photos/seed/love-final/1920/1200");
 
-    <title>My Web Page</title>
+            --serif: "Playfair Display", Georgia, serif;
+            --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+            --bg: #17050d;
+            --bg2: #2b0b1a;
+            --ink: #fff0ee;
+            --muted: #d8b4b9;
+            --rose: #ff5c85;
+            --rose2: #ff9db3;
+            --gold: #ecc98c;
+            --card: rgba(255, 255, 255, .07);
+            --line: rgba(236, 201, 140, .32);
+            --shade1: rgba(23, 5, 13, .35);
+            --shade2: rgba(23, 5, 13, .9);
+            --tint: rgba(255, 60, 110, .3);
+            --duo: linear-gradient(160deg, rgba(255, 70, 120, .22), rgba(70, 10, 35, .32));
+            --fb: linear-gradient(135deg, #8c1b45 0%, #3a0f24 55%, #c98b74 100%);
+            --ease: cubic-bezier(.16, 1, .3, 1);
+        }
+
+        [data-theme=light] {
+            --bg: #fff5f0;
+            --bg2: #ffe4e8;
+            --ink: #42101f;
+            --muted: #8d5c66;
+            --rose: #e0335c;
+            --rose2: #ef7f9b;
+            --gold: #a97a2e;
+            --card: rgba(255, 255, 255, .7);
+            --line: rgba(169, 122, 46, .38);
+            --shade1: rgba(255, 244, 240, .55);
+            --shade2: rgba(255, 232, 234, .92);
+            --tint: rgba(255, 120, 150, .28);
+            --duo: linear-gradient(160deg, rgba(255, 140, 170, .22), rgba(255, 230, 200, .18));
+            --fb: linear-gradient(135deg, #ffc2cf 0%, #ffe9e4 55%, #f5d3a8 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--sans);
+            line-height: 1.65;
+            overflow-x: clip;
+            transition: background .6s, color .6s
+        }
+
+        svg {
+            display: block
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        button {
+            font: inherit;
+            color: inherit;
+            background: none;
+            border: 0;
+            cursor: pointer
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--serif);
+            font-weight: 500;
+            line-height: 1.1
+        }
+
+        em {
+            font-style: italic;
+            color: var(--rose2)
+        }
+
+        section {
+            position: relative
+        }
+
+        .wrap {
+            width: min(1180px, 100% - 2.5rem);
+            margin-inline: auto
+        }
+
+        .tag {
+            display: inline-block;
+            letter-spacing: .32em;
+            text-transform: uppercase;
+            font-size: .7rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 1.3rem
+        }
+
+        .pic {
+            position: absolute;
+            inset: 0;
+            background: var(--i) center/cover no-repeat, var(--fb)
+        }
+
+        .pic::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--duo)
+        }
+
+        .veil {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, var(--shade1), var(--shade2)), radial-gradient(circle at 50% 120%, var(--tint), transparent 62%)
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            margin-top: 2rem;
+            padding: 1rem 2.1rem;
+            border-radius: 99px;
+            background: linear-gradient(135deg, var(--rose), #ff8f6b);
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: .06em;
+            box-shadow: 0 14px 40px rgba(255, 92, 133, .4);
+            transition: transform .5s var(--ease), box-shadow .5s
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 20px 50px rgba(255, 92, 133, .55)
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff
+        }
+
+        .top {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem clamp(1rem, 3vw, 2.5rem);
+            pointer-events: none
+        }
+
+        .top>* {
+            pointer-events: auto
+        }
+
+        .brand,
+        .mode {
+            background: var(--card);
+            border: 1px solid var(--line);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 99px
+        }
+
+        .brand {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.15rem;
+            padding: .4rem 1.1rem
+        }
+
+        .mode {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            transition: transform .5s var(--ease)
+        }
+
+        .mode:hover {
+            transform: rotate(25deg) scale(1.08)
+        }
+
+        .mode svg {
+            width: 20px;
+            height: 20px;
+            grid-area: 1/1;
+            transition: transform .6s var(--ease), opacity .4s
+        }
+
+        .mode .sun {
+            opacity: 0;
+            transform: rotate(-90deg) scale(.4)
+        }
+
+        [data-theme=light] .mode .sun {
+            opacity: 1;
+            transform: none
+        }
+
+        [data-theme=light] .mode .moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(.4)
+        }
+
+        .bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            z-index: 60
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            transform-origin: 0 50%;
+            transform: scaleX(0);
+            background: linear-gradient(90deg, var(--rose), var(--gold))
+        }
+
+        .dots {
+            position: fixed;
+            right: 1.3rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            display: none;
+            flex-direction: column;
+            gap: .95rem
+        }
+
+        .dots a {
+            position: relative;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold);
+            transition: .5s var(--ease)
+        }
+
+        .dots a.on {
+            background: var(--rose);
+            border-color: var(--rose);
+            transform: scale(1.6)
+        }
+
+        .dots a::after {
+            content: attr(data-t);
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translate(8px, -50%);
+            white-space: nowrap;
+            font-size: .7rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: .4s var(--ease);
+            pointer-events: none
+        }
+
+        .dots a:hover::after {
+            opacity: 1;
+            transform: translate(0, -50%)
+        }
+
+        @media(min-width:900px) {
+            .dots {
+                display: flex
+            }
+        }
+
+        .cur {
+            position: fixed;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            z-index: 2000;
+            display: none
+        }
+
+        .cur-dot {
+            width: 8px;
+            height: 8px;
+            margin: -4px 0 0 -4px;
+            border-radius: 50%;
+            background: var(--rose)
+        }
+
+        .cur-ring {
+            width: 40px;
+            height: 40px;
+            margin: -20px 0 0 -20px
+        }
+
+        .cur-ring i {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1.5px solid var(--rose2);
+            transition: transform .5s var(--ease), background .4s, box-shadow .4s
+        }
+
+        .cur-ring.hot i {
+            transform: scale(1.9);
+            background: rgba(255, 92, 133, .16);
+            border-color: transparent
+        }
+
+        .cur-ring.fast i {
+            box-shadow: 0 0 22px var(--rose), inset 0 0 12px rgba(255, 92, 133, .5);
+            border-width: 2.5px
+        }
+
+        @media(hover:hover) and (pointer:fine) {
+
+            body.has-cursor,
+            body.has-cursor * {
+                cursor: none !important
+            }
+
+            body.has-cursor .cur {
+                display: block
+            }
+        }
+
+        .fx {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1500;
+            overflow: hidden
+        }
+
+        .h {
+            position: absolute;
+            width: var(--s);
+            height: var(--s);
+            fill: var(--c);
+            opacity: 0;
+            animation: hf var(--t) cubic-bezier(.2, .7, .3, 1) forwards
+        }
+
+        @keyframes hf {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) scale(.3)
+            }
+
+            15% {
+                opacity: .95
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--dx), var(--dy)) scale(1) rotate(var(--r))
+            }
+        }
+
+        @keyframes beat {
+
+            0%,
+            100% {
+                transform: scale(1)
+            }
+
+            30% {
+                transform: scale(1.22)
+            }
+
+            60% {
+                transform: scale(.96)
+            }
+        }
+
+        .rv {
+            opacity: 0;
+            transform: translate3d(0, 50px, 0);
+            transition: opacity 1.2s var(--ease), transform 1.2s var(--ease), filter 1.2s var(--ease);
+            transition-delay: var(--d, 0s)
+        }
+
+        .rv.l {
+            transform: translate3d(-80px, 0, 0)
+        }
+
+        .rv.r {
+            transform: translate3d(80px, 0, 0)
+        }
+
+        .rv.z {
+            transform: scale(.86) translate3d(0, 40px, 0)
+        }
+
+        .rv.b {
+            filter: blur(14px)
+        }
+
+        .rv.in {
+            opacity: 1;
+            transform: none;
+            filter: none
+        }
+
+        #hero {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            height: 100svh;
+            overflow: hidden;
+            z-index: 0;
+            display: grid;
+            place-items: center;
+            text-align: center
+        }
+
+        #hero .pic {
+            inset: -6%
+        }
+
+        .hero-in {
+            position: relative;
+            z-index: 2;
+            padding: 0 1.25rem;
+            max-width: 980px;
+            will-change: transform, opacity
+        }
+
+        .eyebrow {
+            letter-spacing: .4em;
+            text-transform: uppercase;
+            font-size: .7rem;
+            font-weight: 600;
+            color: var(--gold);
+            opacity: 0
+        }
+
+        .go .eyebrow {
+            animation: fade 1.4s ease .9s forwards
+        }
+
+        h1 {
+            font-size: clamp(3.1rem, 10.5vw, 8.8rem);
+            margin: 1.4rem 0 1.6rem;
+            letter-spacing: -.01em
+        }
+
+        h1 .w {
+            display: inline-block;
+            overflow: hidden;
+            padding: .1em .03em;
+            vertical-align: top;
+            margin-right: .22em
+        }
+
+        h1 .l {
+            display: inline-block;
+            transform: translateY(118%) rotate(7deg)
+        }
+
+        .go h1 .l {
+            animation: rise 1.3s var(--ease) forwards;
+            animation-delay: calc(var(--i)*42ms + .35s)
+        }
+
+        h1 .w.em {
+            font-style: italic;
+            color: var(--rose2)
+        }
+
+        .lead {
+            max-width: 34rem;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            opacity: 0
+        }
+
+        .go .lead {
+            animation: fade 1.4s ease 1.2s forwards
+        }
+
+        .hero-in .btn {
+            opacity: 0
+        }
+
+        .go .hero-in .btn {
+            animation: fade 1.4s ease 1.5s forwards
+        }
+
+        @keyframes rise {
+            to {
+                transform: none
+            }
+        }
+
+        @keyframes fade {
+            to {
+                opacity: 1
+            }
+        }
+
+        .cue {
+            position: absolute;
+            bottom: 1.8rem;
+            left: 50%;
+            z-index: 2;
+            transform: translateX(-50%);
+            font-size: .65rem;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: grid;
+            justify-items: center;
+            gap: .7rem
+        }
+
+        .cue i {
+            width: 1px;
+            height: 46px;
+            background: linear-gradient(var(--rose), transparent);
+            transform-origin: top;
+            animation: cue 2s var(--ease) infinite
+        }
+
+        @keyframes cue {
+            0% {
+                transform: scaleY(0)
+            }
+
+            50% {
+                transform: scaleY(1)
+            }
+
+            100% {
+                transform: scaleY(1);
+                opacity: 0
+            }
+        }
+
+        #intro {
+            z-index: 1;
+            background: var(--bg);
+            border-radius: 2.6rem 2.6rem 0 0;
+            margin-top: -2.6rem;
+            padding: clamp(5rem, 12vw, 10rem) 0;
+            box-shadow: 0 -30px 90px rgba(0, 0, 0, .35);
+            overflow: hidden
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: clamp(2rem, 6vw, 6rem);
+            align-items: center
+        }
+
+        .words {
+            font-size: clamp(2rem, 4.6vw, 4rem)
+        }
+
+        .wd {
+            display: inline-block;
+            margin-right: .26em;
+            opacity: .14;
+            will-change: opacity
+        }
+
+        .intro-copy p {
+            max-width: 34rem;
+            margin-top: 2rem;
+            color: var(--muted)
+        }
+
+        .arch {
+            position: relative;
+            width: 100%;
+            max-width: 460px;
+            aspect-ratio: 3/4;
+            margin-left: auto
+        }
+
+        .arch::before {
+            content: "";
+            position: absolute;
+            inset: -14px 14px 14px -14px;
+            border: 1px solid var(--line);
+            border-radius: 999px 999px 30px 30px
+        }
+
+        .arch-clip {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: 999px 999px 30px 30px;
+            clip-path: inset(38% round 999px)
+        }
+
+        .arch-clip .pic {
+            inset: -8%;
+            transform: scale(1.35)
+        }
+
+        .orb {
+            position: absolute;
+            right: -8%;
+            bottom: 8%;
+            width: 34%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, var(--rose2), var(--rose) 60%, transparent 72%);
+            filter: blur(2px);
+            opacity: .85;
+            animation: float 7s ease-in-out infinite
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-22px)
+            }
+        }
+
+        #story {
+            height: 520vh;
+            height: 520svh;
+            background: var(--bg2)
+        }
+
+        .pin {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            height: 100svh;
+            overflow: hidden
+        }
+
+        .story-bg {
+            position: absolute;
+            inset: 0
+        }
+
+        .story-bg .pic {
+            inset: -6%;
+            filter: blur(38px) saturate(1.3);
+            opacity: 0
+        }
+
+        .story-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--bg2);
+            opacity: .8
+        }
+
+        .story-grid {
+            position: relative;
+            height: 100%;
+            display: grid;
+            grid-template-columns: minmax(0, 420px) minmax(0, 520px);
+            gap: clamp(2rem, 7vw, 7rem);
+            align-items: center;
+            justify-content: center;
+            padding: 0 1.25rem
+        }
+
+        .frame,
+        .twin {
+            position: relative;
+            height: min(76vh, 640px);
+            overflow: hidden
+        }
+
+        .frame {
+            border-radius: 28px;
+            box-shadow: 0 40px 90px rgba(0, 0, 0, .45);
+            outline: 1px solid var(--line);
+            outline-offset: 10px
+        }
+
+        .track {
+            height: calc(var(--n)*100%);
+            will-change: transform
+        }
+
+        .slide {
+            position: relative;
+            height: calc(100%/var(--n));
+            overflow: hidden
+        }
+
+        .slide .pic {
+            will-change: transform
+        }
+
+        .badge {
+            position: absolute;
+            left: 1rem;
+            bottom: 1rem;
+            z-index: 3;
+            padding: .4rem 1rem;
+            border-radius: 99px;
+            background: rgba(20, 3, 10, .55);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            font-size: .75rem;
+            letter-spacing: .25em
+        }
+
+        .twin {
+            -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
+            mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent)
+        }
+
+        .chap {
+            height: calc(100%/var(--n));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            will-change: transform, opacity
+        }
+
+        .chap .num {
+            font-family: var(--serif);
+            font-size: clamp(4rem, 10vw, 8.5rem);
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--gold);
+            opacity: .8
+        }
+
+        .chap h3 {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            margin-top: .4rem
+        }
+
+        .chap p {
+            color: var(--muted);
+            max-width: 28rem;
+            margin-top: 1rem
+        }
+
+        .sprog {
+            position: absolute;
+            right: clamp(1rem, 3vw, 3rem);
+            top: 50%;
+            height: 32vh;
+            width: 2px;
+            background: var(--line);
+            transform: translateY(-50%)
+        }
+
+        .sprog i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(var(--rose), var(--gold));
+            transform-origin: top;
+            transform: scaleY(0)
+        }
+
+        #gallery {
+            height: 380vh;
+            height: 380svh;
+            background: var(--bg)
+        }
+
+        #gallery .pin {
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .ghost {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(10rem, 34vw, 32rem);
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--line);
+            white-space: nowrap;
+            opacity: .55;
+            pointer-events: none;
+            will-change: transform
+        }
+
+        .g-head {
+            position: absolute;
+            top: clamp(4.6rem, 11vh, 7.5rem);
+            left: clamp(1.25rem, 6vw, 6rem);
+            z-index: 2;
+            will-change: transform, opacity
+        }
+
+        .g-head h2 {
+            font-size: clamp(2rem, 5vw, 4.2rem)
+        }
+
+        .g-head p {
+            color: var(--muted);
+            margin-top: .5rem
+        }
+
+        .g-track {
+            position: relative;
+            display: flex;
+            gap: clamp(1.2rem, 3vw, 3rem);
+            align-items: center;
+            width: max-content;
+            padding: 6vh 10vw 0 clamp(1.25rem, 6vw, 6rem);
+            will-change: transform
+        }
+
+        .card {
+            position: relative;
+            flex: none;
+            width: clamp(230px, 25vw, 350px);
+            aspect-ratio: 3/4;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--fb);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, .35);
+            will-change: transform
+        }
+
+        .card:nth-child(even) {
+            margin-top: 14vh
+        }
+
+        .card:nth-child(odd) {
+            margin-bottom: 8vh
+        }
+
+        .card .pic {
+            inset: -6% -24%;
+            will-change: transform
+        }
+
+        .card figcaption {
+            position: absolute;
+            inset: auto 0 0 0;
+            z-index: 2;
+            padding: 3rem 1.2rem 1.1rem;
+            background: linear-gradient(transparent, rgba(20, 3, 10, .88));
+            color: #fff;
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            line-height: 1.2
+        }
+
+        .card small {
+            display: block;
+            font-family: var(--sans);
+            font-size: .62rem;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: .2rem
+        }
+
+        #quote {
+            height: 115vh;
+            height: 115svh;
+            min-height: 600px;
+            background: var(--bg)
+        }
+
+        .q-wrap {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            clip-path: circle(0% at 50% 50%)
+        }
+
+        .q-wrap .pic {
+            inset: -14% 0
+        }
+
+        .q-in {
+            position: relative;
+            z-index: 2;
+            padding: 0 1.5rem;
+            max-width: 1050px
+        }
+
+        .q-in svg {
+            width: 46px;
+            margin: 0 auto 1.6rem;
+            fill: var(--rose)
+        }
+
+        blockquote {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(2rem, 6.2vw, 5.2rem);
+            line-height: 1.15
+        }
+
+        blockquote .ln {
+            display: block;
+            overflow: hidden;
+            padding: .06em 0
+        }
+
+        blockquote .ln span {
+            display: block;
+            transform: translateY(108%)
+        }
+
+        cite {
+            display: block;
+            margin-top: 2rem;
+            font-style: normal;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            font-size: .72rem;
+            color: var(--gold)
+        }
+
+        #timeline {
+            padding: clamp(5rem, 12vw, 10rem) 0;
+            background: linear-gradient(180deg, var(--bg), var(--bg2))
+        }
+
+        .sec-head {
+            text-align: center;
+            margin-bottom: clamp(3rem, 8vw, 6rem);
+            padding: 0 1.25rem
+        }
+
+        .sec-head h2 {
+            font-size: clamp(2.2rem, 5.5vw, 4.6rem)
+        }
+
+        .tl {
+            position: relative;
+            width: min(1000px, 100% - 2.5rem);
+            margin: auto
+        }
+
+        .tl-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--line);
+            transform: translateX(-50%)
+        }
+
+        .tl-line b {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(var(--rose), var(--gold));
+            transform-origin: top;
+            transform: scaleY(0)
+        }
+
+        .tl-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4.5rem;
+            margin-bottom: clamp(3rem, 8vw, 6rem)
+        }
+
+        .node {
+            position: absolute;
+            left: 50%;
+            top: 2.2rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--rose);
+            box-shadow: 0 0 0 7px rgba(255, 92, 133, .25);
+            transform: translateX(-50%) scale(0);
+            transition: transform .9s cubic-bezier(.34, 1.56, .64, 1) .35s
+        }
+
+        .tl-item.in .node {
+            transform: translateX(-50%) scale(1)
+        }
+
+        .tl-card {
+            grid-column: 1;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            opacity: 0;
+            transform: translate3d(-90px, 40px, 0) rotate(-4deg);
+            transition: opacity 1.2s var(--ease), transform 1.2s var(--ease)
+        }
+
+        .tl-item:nth-child(even) .tl-card {
+            grid-column: 2;
+            transform: translate3d(90px, 40px, 0) rotate(4deg)
+        }
+
+        .tl-item.in .tl-card {
+            opacity: 1;
+            transform: none
+        }
+
+        .thumb {
+            position: relative;
+            aspect-ratio: 16/10;
+            overflow: hidden
+        }
+
+        .thumb .pic {
+            inset: -6%;
+            transition: transform 1.4s var(--ease)
+        }
+
+        .tl-card:hover .thumb .pic {
+            transform: scale(1.08)
+        }
+
+        .tl-body {
+            padding: 1.4rem 1.6rem 1.7rem
+        }
+
+        .tl-body time {
+            font-size: .68rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600
+        }
+
+        .tl-body h3 {
+            font-size: 1.7rem;
+            margin: .4rem 0 .5rem
+        }
+
+        .tl-body p {
+            color: var(--muted);
+            font-size: .95rem
+        }
+
+        #reasons {
+            padding: clamp(5rem, 12vw, 10rem) 0;
+            background: var(--bg2);
+            overflow: hidden
+        }
+
+        #reasons::before {
+            content: "";
+            position: absolute;
+            width: 60vmax;
+            height: 60vmax;
+            left: 50%;
+            top: -20%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, var(--tint), transparent 60%);
+            opacity: .5;
+            pointer-events: none
+        }
+
+        .cards {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            perspective: 1200px
+        }
+
+        .rc {
+            position: relative;
+            height: 100%;
+            padding: 2.6rem 2rem;
+            border-radius: 26px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            overflow: hidden;
+            transition: transform .35s var(--ease);
+            transform-style: preserve-3d
+        }
+
+        .rc::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(255, 157, 179, .28), transparent 55%);
+            opacity: 0;
+            transition: opacity .4s
+        }
+
+        .rc:hover::before {
+            opacity: 1
+        }
+
+        .ico {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--rose), #ff9a7a);
+            margin-bottom: 1.6rem;
+            box-shadow: 0 12px 30px rgba(255, 92, 133, .4)
+        }
+
+        .ico svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        .rc h3 {
+            font-size: 1.7rem;
+            margin-bottom: .7rem
+        }
+
+        .rc p {
+            color: var(--muted)
+        }
+
+        .stats {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+            margin-top: clamp(3.5rem, 8vw, 6rem)
+        }
+
+        .stat b {
+            display: block;
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(2.2rem, 7vw, 5.4rem);
+            line-height: 1;
+            background: linear-gradient(135deg, var(--rose2), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .stat span {
+            display: block;
+            margin-top: .6rem;
+            font-size: clamp(.6rem, 1.8vw, .75rem);
+            letter-spacing: .24em;
+            text-transform: uppercase;
+            color: var(--muted)
+        }
+
+        #finale {
+            min-height: 125vh;
+            min-height: 125svh;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            overflow: hidden;
+            background: var(--bg)
+        }
+
+        #finale .pic {
+            inset: -4%;
+            will-change: transform
+        }
+
+        .bigheart {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: min(88vw, 640px);
+            transform: translate(-50%, -52%);
+            overflow: visible
+        }
+
+        .bigheart path {
+            fill: var(--rose);
+            fill-opacity: 0;
+            stroke: var(--rose2);
+            stroke-width: .22
+        }
+
+        .bigheart.beat {
+            animation: beat 2.2s ease-in-out infinite
+        }
+
+        .f-in {
+            position: relative;
+            z-index: 2;
+            padding: 0 1.5rem;
+            max-width: 860px
+        }
+
+        .f-in h2 {
+            font-size: clamp(2.4rem, 7vw, 6rem)
+        }
+
+        .f-in p {
+            color: var(--muted);
+            max-width: 30rem;
+            margin: 1.4rem auto 0
+        }
+
+        .thanks {
+            min-height: 3.4rem;
+            margin-top: 1.4rem;
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: var(--rose2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: .9s var(--ease)
+        }
+
+        .thanks.on {
+            opacity: 1;
+            transform: none
+        }
+
+        footer {
+            position: absolute;
+            bottom: 1.6rem;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            font-size: .7rem;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: var(--muted)
+        }
+
+        @media(max-width:899px) {
+            .intro-grid {
+                grid-template-columns: 1fr
+            }
+
+            .arch {
+                margin: 1rem auto 0;
+                max-width: 340px
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: 46% 1fr;
+                align-content: stretch;
+                gap: 1rem;
+                padding: 4.6rem 1.25rem 1.2rem
+            }
+
+            .frame,
+            .twin {
+                height: 100%
+            }
+
+            .frame {
+                outline: 0
+            }
+
+            .chap .num {
+                font-size: 3.2rem
+            }
+
+            .chap h3 {
+                font-size: 1.9rem
+            }
+
+            .chap p {
+                font-size: .92rem;
+                margin-top: .6rem
+            }
+
+            .sprog {
+                display: none
+            }
+
+            .card {
+                width: min(66vw, 280px)
+            }
+
+            .tl-line {
+                left: 14px
+            }
+
+            .tl-item {
+                grid-template-columns: 1fr;
+                padding-left: 2.6rem;
+                gap: 0
+            }
+
+            .node {
+                left: 14px
+            }
+
+            .tl-card,
+            .tl-item:nth-child(even) .tl-card {
+                grid-column: 1
+            }
+
+            .bigheart {
+                opacity: .5
+            }
+
+            .cards {
+                grid-template-columns: 1fr
+            }
+
+            .rc {
+                padding: 2rem 1.6rem
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            * {
+                animation-duration: .01ms !important;
+                animation-delay: 0s !important;
+                transition-duration: .01ms !important
+            }
+        }
+
+        #lockApp {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: grid;
+            place-items: center;
+            background: #12040a;
+            color: var(--ink);
+            line-height: normal;
+            font-family: -apple-system, "SF Pro Display", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+            transition: opacity 1s ease
+        }
+
+        #lockApp.out {
+            opacity: 0;
+            pointer-events: none
+        }
+
+        #lockApp .homebar {
+            cursor: pointer
+        }
+
+        html.locked,
+        html.locked body {
+            overflow: hidden;
+            height: 100%
+        }
+
+        #lockApp {
+            --img-lock: url("https://picsum.photos/seed/love-lock/900/1800");
+            --ink: #fff;
+            --soft: rgba(255, 255, 255, .72);
+            --tint1: rgba(150, 20, 70, .45);
+            --tint2: rgba(18, 3, 10, .82);
+            --glass: rgba(255, 255, 255, .14);
+            --glass-b: rgba(255, 255, 255, .2);
+            --key: rgba(255, 255, 255, .17);
+            --key-on: rgba(255, 255, 255, .5);
+            --rose: #ff5c85;
+            --gold: #ecc98c;
+        }
+
+        [data-theme=light] #lockApp {
+            --ink: #4a1226;
+            --soft: rgba(74, 18, 38, .68);
+            --tint1: rgba(255, 196, 210, .35);
+            --tint2: rgba(255, 238, 232, .82);
+            --glass: rgba(255, 255, 255, .5);
+            --glass-b: rgba(255, 255, 255, .75);
+            --key: rgba(255, 255, 255, .55);
+            --key-on: rgba(255, 255, 255, .95);
+            --rose: #e0335c;
+            --gold: #a97a2e;
+        }
+
+        #lockApp * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none
+        }
+
+        #lockApp button {
+            font: inherit;
+            color: inherit;
+            background: none;
+            border: 0;
+            cursor: pointer
+        }
+
+        #lockApp svg {
+            display: block
+        }
+
+        #lockApp .backdrop {
+            position: fixed;
+            inset: -10%;
+            background: var(--img-lock) center/cover, linear-gradient(160deg, #a3194c, #2a0a18 60%, #8a4a3a);
+            filter: blur(50px) saturate(1.3) brightness(.6);
+            transition: filter .6s
+        }
+
+        [data-theme=light] #lockApp .backdrop {
+            filter: blur(50px) saturate(1.2) brightness(1.1)
+        }
+
+        #lockApp .flash {
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 50;
+            transition: opacity .9s
+        }
+
+        #lockApp .flash.on {
+            opacity: .85;
+            transition: opacity .12s
+        }
+
+        #lockApp .phone {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            background: #000;
+            transition: transform 1s cubic-bezier(.16, 1, .3, 1), opacity .9s, filter .9s
+        }
+
+        @media(min-width:640px) {
+            #lockApp .phone {
+                width: 390px;
+                height: 844px;
+                border-radius: 56px;
+                transform: scale(var(--s, 1));
+                box-shadow: 0 0 0 11px #0b0206, 0 0 0 13px #4a2e3a, 0 50px 140px rgba(0, 0, 0, .65)
+            }
+
+            #lockApp .phone.leave {
+                transform: scale(calc(var(--s, 1)*1.25));
+                opacity: 0;
+                filter: blur(8px)
+            }
+        }
+
+        @media(max-width:639px) {
+            #lockApp .phone.leave {
+                transform: scale(1.25);
+                opacity: 0;
+                filter: blur(8px)
+            }
+        }
+
+        #lockApp .wall {
+            position: absolute;
+            inset: -5%;
+            background: var(--img-lock) center/cover, linear-gradient(160deg, #a3194c, #2a0a18 60%, #8a4a3a);
+            animation: drift 18s ease-in-out infinite alternate
+        }
+
+        #lockApp .wall::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, var(--tint1), var(--tint2)), radial-gradient(circle at 50% 100%, rgba(255, 92, 133, .35), transparent 60%)
+        }
+
+        @keyframes drift {
+            to {
+                transform: scale(1.1) translate(-1.5%, -1%)
+            }
+        }
+
+        #lockApp .island {
+            position: absolute;
+            top: 11px;
+            left: 50%;
+            width: 118px;
+            height: 34px;
+            margin-left: -59px;
+            border-radius: 20px;
+            background: #000;
+            z-index: 10
+        }
+
+        #lockApp .status {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 54px;
+            padding: 18px 32px 0 36px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 15px;
+            z-index: 9
+        }
+
+        #lockApp .status .ic {
+            display: flex;
+            gap: 6px;
+            align-items: center
+        }
+
+        @media(max-width:639px) {
+            #lockApp .island {
+                display: none
+            }
+
+            #lockApp .status {
+                height: 44px;
+                padding-top: 12px
+            }
+        }
+
+        #lockApp .screen {
+            position: absolute;
+            inset: 0;
+            transition: transform .8s cubic-bezier(.16, 1, .3, 1), opacity .6s, backdrop-filter .8s, -webkit-backdrop-filter .8s
+        }
+
+        #lockApp .lock {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 78px;
+            touch-action: none
+        }
+
+        #lockApp .padlock {
+            width: 22px;
+            height: 22px;
+            color: var(--ink);
+            margin-bottom: 10px
+        }
+
+        #lockApp .padlock .shackle {
+            transform-origin: 17px 11px;
+            transition: transform .5s cubic-bezier(.34, 1.56, .64, 1)
+        }
+
+        #lockApp .open .padlock .shackle,
+        #lockApp .padlock.open .shackle {
+            transform: translate(1px, -3px) rotate(22deg)
+        }
+
+        #lockApp .date {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--soft);
+            letter-spacing: .01em
+        }
+
+        #lockApp .clock {
+            font-size: clamp(86px, 25vw, 100px);
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -3px;
+            margin-top: 2px;
+            background: linear-gradient(180deg, var(--ink) 30%, var(--rose));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-variant-numeric: tabular-nums;
+            animation: clockIn 1.2s cubic-bezier(.16, 1, .3, 1) both
+        }
+
+        @keyframes clockIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(.94);
+                filter: blur(10px)
+            }
+        }
+
+        #lockApp .notes {
+            position: absolute;
+            left: 14px;
+            right: 14px;
+            bottom: 150px;
+            display: grid;
+            gap: 8px
+        }
+
+        #lockApp .note {
+            display: flex;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 22px;
+            background: var(--glass);
+            border: 1px solid var(--glass-b);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            animation: noteIn 1s cubic-bezier(.16, 1, .3, 1) both
+        }
+
+        #lockApp .note:nth-child(1) {
+            animation-delay: .5s
+        }
+
+        #lockApp .note:nth-child(2) {
+            animation-delay: .7s
+        }
+
+        @keyframes noteIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(.96)
+            }
+        }
+
+        #lockApp .ni {
+            flex: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--rose), #ff9a7a);
+            color: #fff
+        }
+
+        #lockApp .ni svg {
+            width: 20px;
+            height: 20px
+        }
+
+        #lockApp .note b {
+            font-size: 15px
+        }
+
+        #lockApp .note time {
+            float: right;
+            font-size: 12px;
+            color: var(--soft)
+        }
+
+        #lockApp .note p {
+            font-size: 14px;
+            line-height: 1.35;
+            color: var(--soft);
+            margin-top: 1px
+        }
+
+        #lockApp .bottom {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0 40px 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        #lockApp .round {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--glass);
+            border: 1px solid var(--glass-b);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: transform .3s cubic-bezier(.34, 1.56, .64, 1)
+        }
+
+        #lockApp .round:active {
+            transform: scale(.88)
+        }
+
+        #lockApp .round svg {
+            width: 22px;
+            height: 22px
+        }
+
+        #lockApp .swipe {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--soft);
+            cursor: pointer;
+            animation: bob 2.4s ease-in-out infinite
+        }
+
+        #lockApp .swipe span {
+            background: linear-gradient(100deg, var(--soft) 40%, var(--ink) 50%, var(--soft) 60%) 0 0/250% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 2.6s linear infinite
+        }
+
+        @keyframes shine {
+            to {
+                background-position: -150% 0
+            }
+        }
+
+        @keyframes bob {
+            50% {
+                transform: translateY(-6px)
+            }
+        }
+
+        #lockApp .homebar {
+            position: absolute;
+            bottom: 9px;
+            left: 50%;
+            width: 138px;
+            height: 5px;
+            margin-left: -69px;
+            border-radius: 3px;
+            background: var(--ink);
+            opacity: .9;
+            z-index: 9;
+            cursor: pointer
+        }
+
+        @media(max-width:639px) {
+            #lockApp .bottom {
+                padding-bottom: 38px
+            }
+
+            #lockApp .notes {
+                bottom: 130px
+            }
+        }
+
+        #lockApp .pass {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 92px;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.08);
+            background: rgba(10, 2, 6, .1)
+        }
+
+        [data-theme=light] #lockApp .pass {
+            background: rgba(255, 240, 236, .1)
+        }
+
+        #lockApp .phone.passing .lock {
+            transform: translateY(-14%) scale(.96);
+            opacity: 0;
+            pointer-events: none
+        }
+
+        #lockApp .phone.passing .pass {
+            opacity: 1;
+            pointer-events: auto;
+            transform: none;
+            backdrop-filter: blur(30px) brightness(.85);
+            -webkit-backdrop-filter: blur(30px) brightness(.85)
+        }
+
+        #lockApp .pass h2 {
+            font-family: inherit;
+            font-size: 21px;
+            font-weight: 500;
+            letter-spacing: .01em;
+            transition: opacity .3s
+        }
+
+        #lockApp .pdots {
+            display: flex;
+            gap: 22px;
+            margin: 30px 0 0
+        }
+
+        #lockApp .pdots i {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            border: 1.5px solid var(--ink);
+            transition: background .2s, transform .3s cubic-bezier(.34, 1.56, .64, 1)
+        }
+
+        #lockApp .pdots i.on {
+            background: var(--ink);
+            transform: scale(1.15)
+        }
+
+        #lockApp .pdots.shake {
+            animation: shake .5s cubic-bezier(.36, .07, .19, .97)
+        }
+
+        #lockApp .pdots.ok i {
+            background: var(--rose);
+            border-color: var(--rose);
+            box-shadow: 0 0 14px var(--rose)
+        }
+
+        @keyframes shake {
+
+            10%,
+            90% {
+                transform: translateX(-2px)
+            }
+
+            20%,
+            80% {
+                transform: translateX(5px)
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translateX(-12px)
+            }
+
+            40%,
+            60% {
+                transform: translateX(12px)
+            }
+        }
+
+        #lockApp .hintTxt {
+            height: 18px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--soft);
+            opacity: 0;
+            transition: opacity .4s
+        }
+
+        #lockApp .hintTxt.on {
+            opacity: 1
+        }
+
+        #lockApp .pad {
+            --k: min(78px, 19vw);
+            display: grid;
+            grid-template-columns: repeat(3, var(--k));
+            gap: 16px 22px;
+            margin-top: 22px
+        }
+
+        @media(max-width:639px) and (max-height:720px) {
+            #lockApp .pad {
+                --k: 64px;
+                gap: 12px 20px
+            }
+
+            #lockApp .pass {
+                padding-top: 60px
+            }
+        }
+
+        #lockApp .key {
+            width: var(--k);
+            height: var(--k);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--key);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: background .5s, transform .25s
+        }
+
+        #lockApp .key:active {
+            background: var(--key-on);
+            transform: scale(.94);
+            transition: none
+        }
+
+        #lockApp .key b {
+            font-size: clamp(28px, 5vh, 34px);
+            font-weight: 400;
+            line-height: 1
+        }
+
+        #lockApp .key small {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: .2em;
+            margin-top: 2px;
+            min-height: 11px;
+            color: var(--soft)
+        }
+
+        #lockApp .key.zero {
+            grid-column: 2
+        }
+
+        #lockApp .pfoot {
+            width: min(280px, 86%);
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 16px
+        }
+
+        #lockApp .pfoot button {
+            padding: 8px 4px
+        }
+
+        #lockApp .welcome {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-content: center;
+            justify-items: center;
+            gap: 14px;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 92, 133, .55), rgba(18, 3, 10, .92) 70%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .6s;
+            z-index: 20;
+            color: #fff
+        }
+
+        #lockApp .welcome.on {
+            opacity: 1
+        }
+
+        #lockApp .welcome svg {
+            width: 76px;
+            fill: #fff;
+            animation: beat 1s ease-in-out infinite
+        }
+
+        #lockApp .welcome p {
+            font-family: "Playfair Display", Georgia, serif;
+            font-style: italic;
+            font-size: 28px
+        }
+
+        @keyframes beat {
+
+            0%,
+            100% {
+                transform: scale(1)
+            }
+
+            30% {
+                transform: scale(1.22)
+            }
+
+            60% {
+                transform: scale(.96)
+            }
+        }
+
+        #lockApp .lfx {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 40;
+            overflow: hidden
+        }
+
+        #lockApp .h {
+            position: absolute;
+            width: var(--s);
+            height: var(--s);
+            fill: var(--c);
+            opacity: 0;
+            animation: hf var(--t) cubic-bezier(.2, .7, .3, 1) forwards
+        }
+
+        @keyframes hf {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) scale(.3)
+            }
+
+            15% {
+                opacity: .95
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--dx), var(--dy)) scale(1) rotate(var(--r))
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            #lockApp * {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <svg width="0" height="0" style="position:absolute">
+        <symbol id="hrt" viewBox="0 0 24 24">
+            <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </symbol>
+    </svg>
 
-    <header>
-        <h1>Welcome to Tickets Home</h1>
-
+    <div class="bar"><span id="barFill"></span></div>
+    <header class="top">
+        <a class="brand" href="#hero">Forever &amp; Always</a>
+        <button class="mode" id="mode" aria-label="Switch light or dark mode">
+            <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z" />
+            </svg>
+            <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round">
+                <circle cx="12" cy="12" r="4.2" />
+                <path
+                    d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" />
+            </svg>
+        </button>
     </header>
+    <nav class="dots" id="dots" aria-label="Sections"></nav>
+    <div class="cur">
+        <div class="cur-ring" id="ring"><i></i></div>
+        <div class="cur-dot" id="dot"></div>
+    </div>
+    <div class="fx" id="fx"></div>
+
+    <div id="lockApp">
+        <div class="backdrop"></div>
+        <div class="flash" id="flash"></div>
+        <div class="lfx" id="lfx"></div>
+
+        <main class="phone" id="phone">
+            <div class="wall"></div>
+            <div class="island"></div>
+            <div class="status">
+                <span id="stime">9:41</span>
+                <span class="ic">
+                    <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor">
+                        <rect x="0" y="8" width="3" height="4" rx="1" />
+                        <rect x="5" y="5.5" width="3" height="6.5" rx="1" />
+                        <rect x="10" y="3" width="3" height="9" rx="1" />
+                        <rect x="15" y="0" width="3" height="12" rx="1" />
+                    </svg>
+                    <svg width="17" height="12" viewBox="0 0 17 12" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <path d="M1.5 4.2a10 10 0 0 1 14 0M4 7a6.4 6.4 0 0 1 9 0" />
+                        <circle cx="8.5" cy="10" r="1.2" fill="currentColor" stroke="none" />
+                    </svg>
+                    <svg width="27" height="13" viewBox="0 0 27 13" fill="none">
+                        <rect x=".5" y=".5" width="22" height="12" rx="3.5" stroke="currentColor" opacity=".5" />
+                        <rect x="2" y="2" width="17" height="9" rx="2" fill="currentColor" />
+                        <path d="M24.5 4.5v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                            opacity=".6" />
+                    </svg>
+                </span>
+            </div>
+
+            <section class="screen lock" id="lock">
+                <svg class="padlock" id="padlock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2" stroke-linecap="round">
+                    <path class="shackle" d="M7 11V8a5 5 0 0 1 10 0v3" />
+                    <rect x="4.5" y="11" width="15" height="10" rx="2.5" fill="currentColor" stroke="none" />
+                </svg>
+                <div class="date" id="date"></div>
+                <div class="clock" id="clock">9:41</div>
+
+                <div class="notes">
+                    <div class="note">
+                        <div class="ni"><svg viewBox="0 0 24 24" fill="currentColor">
+                                <use href="#hrt" />
+                            </svg></div>
+                        <div style="flex:1"><b>My Love</b><time>now</time>
+                            <p>Good morning, beautiful. I made something just for you.</p>
+                        </div>
+                    </div>
+                    <div class="note">
+                        <div class="ni" style="background:linear-gradient(135deg,#ecc98c,#ff9a7a)"><svg
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M12 7v5l3 2" />
+                            </svg></div>
+                        <div style="flex:1"><b>Reminder</b><time>today</time>
+                            <p>Hint: the day our story began, DDMM.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom">
+                    <button class="round" id="torch" aria-label="Switch light or dark mode"><svg viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M8 3h8l-1 5H9z" />
+                            <path d="M9 8v3l-1 2v8h8v-8l-1-2V8" />
+                            <path d="M12 14v2" />
+                        </svg></button>
+                    <div class="swipe" id="swipe"><span>Swipe up to unlock</span></div>
+                    <button class="round" id="cam" aria-label="Send hearts"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 8h3l2-2.5h6L17 8h3v11H4z" />
+                            <circle cx="12" cy="13.4" r="3.4" />
+                        </svg></button>
+                </div>
+            </section>
+
+            <section class="screen pass" id="pass" aria-hidden="true">
+                <h2 id="ptitle">Enter Passcode</h2>
+                <div class="pdots" id="pdots"><i></i><i></i><i></i><i></i></div>
+                <p class="hintTxt" id="hintTxt">Hint: the day our story began, DDMM</p>
+                <div class="pad" id="pad"></div>
+                <div class="pfoot"><button id="hint">Hint</button><button id="cancel">Cancel</button></div>
+            </section>
+
+            <div class="homebar" id="homebar"></div>
+            <div class="welcome" id="welcome"><svg viewBox="0 0 24 24">
+                    <use href="#hrt" />
+                </svg>
+                <p>Welcome, my love</p>
+            </div>
+        </main>
+
+    </div>
 
     <main>
-        <section id="about">
-            /**DANCE FESTIVAL DAILY TICKETS - 09-Jan-27**/
-            <button id='zbs-register-widget-btn'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790436"> Register now </button><br><br>
+        <section id="hero" data-t="Welcome">
+            <div class="pic" id="heroBg" style="--i:var(--img-hero)"></div>
+            <div class="veil"></div>
+            <div class="hero-in" id="heroIn">
+                <p class="eyebrow">A love letter, in motion</p>
+                <h1 id="split">Forever begins with <em>you</em></h1>
+                <p class="lead">Every heartbeat, every quiet morning, every little thing &mdash; it all leads back to
+                    us.</p>
+                <a class="btn" href="#intro">Begin our story <svg viewBox="0 0 24 24">
+                        <use href="#hrt" />
+                    </svg></a>
+            </div>
+            <div class="cue"><span>Scroll</span><i></i></div>
+        </section>
 
-            /**DANCE FESTIVAL DAILY TICKETS - 08-Jan-27**/
-            <button id='zbs-register-widget-btn-1'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790433"> Register now </button><br><br>
+        <section id="intro" data-t="Hello">
+            <div class="wrap intro-grid">
+                <div class="intro-copy">
+                    <span class="tag rv">Chapter one &mdash; Hello</span>
+                    <h2 class="words" id="words">Out of every moment in the world, you were the one that made time stand
+                        still.</h2>
+                    <p class="rv" style="--d:.1s">We never planned for this &mdash; a glance, a laugh, and suddenly the
+                        whole sky felt softer. This is the story of how two ordinary days became one extraordinary
+                        forever.</p>
+                </div>
+                <div class="arch" id="arch">
+                    <div class="arch-clip" id="archClip">
+                        <div class="pic" id="archPic" style="--i:var(--img-intro)"></div>
+                    </div>
+                    <span class="orb"></span>
+                </div>
+            </div>
+        </section>
 
-            /**DANCE FESTIVAL DAILY TICKETS - 07-Jan-27**/
-            <button id='zbs-register-widget-btn-2'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790430"> Register now </button><br><br>
+        <section id="story" data-t="Our story" style="--n:4">
+            <div class="pin">
+                <div class="story-bg" id="storyBg">
+                    <div class="pic" style="--i:var(--img-c1)"></div>
+                    <div class="pic" style="--i:var(--img-c2)"></div>
+                    <div class="pic" style="--i:var(--img-c3)"></div>
+                    <div class="pic" style="--i:var(--img-c4)"></div>
+                </div>
+                <div class="story-grid">
+                    <div class="frame">
+                        <div class="track" id="iTrack">
+                            <div class="slide">
+                                <div class="pic" style="--i:var(--img-c1)"></div>
+                            </div>
+                            <div class="slide">
+                                <div class="pic" style="--i:var(--img-c2)"></div>
+                            </div>
+                            <div class="slide">
+                                <div class="pic" style="--i:var(--img-c3)"></div>
+                            </div>
+                            <div class="slide">
+                                <div class="pic" style="--i:var(--img-c4)"></div>
+                            </div>
+                        </div>
+                        <div class="badge" id="badge">01 / 04</div>
+                    </div>
+                    <div class="twin">
+                        <div class="track" id="tTrack">
+                            <div class="chap"><span class="num">01</span>
+                                <h3>The first hello</h3>
+                                <p>It started with a smile across a crowded room and a heartbeat that forgot its rhythm.
+                                </p>
+                            </div>
+                            <div class="chap"><span class="num">02</span>
+                                <h3>Our first date</h3>
+                                <p>Cold coffee, warm conversation, and hours that felt like minutes.</p>
+                            </div>
+                            <div class="chap"><span class="num">03</span>
+                                <h3>Late-night promises</h3>
+                                <p>Under city lights we spoke softly about everything and nothing &mdash; and I knew.
+                                </p>
+                            </div>
+                            <div class="chap"><span class="num">04</span>
+                                <h3>Home is you</h3>
+                                <p>Somewhere between the laughter and the quiet, you became my favourite place to be.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sprog"><i id="sFill"></i></div>
+                </div>
+            </div>
+        </section>
 
-            /**DANCE FESTIVAL DAILY TICKETS - 06-Jan-27**/
-            <button id='zbs-register-widget-btn-3'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790427">Register now </button><br><br>
+        <section id="gallery" data-t="Moments">
+            <div class="pin">
+                <div class="ghost" id="ghost">love</div>
+                <div class="g-head" id="gHead"><span class="tag">Gallery</span>
+                    <h2>Moments we <em>kept</em></h2>
+                    <p>Scroll through our little universe.</p>
+                </div>
+                <div class="g-track" id="gTrack">
+                    <figure class="card">
+                        <div class="pic" style="--i:var(--img-g1)"></div>
+                        <figcaption><small>12 &middot; 03 &middot; 2023</small>Golden hour walks</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <div class="pic" style="--i:var(--img-g2)"></div>
+                        <figcaption><small>04 &middot; 07 &middot; 2023</small>Rainy day dances</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <div class="pic" style="--i:var(--img-g3)"></div>
+                        <figcaption><small>19 &middot; 09 &middot; 2023</small>Midnight drives</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <div class="pic" style="--i:var(--img-g4)"></div>
+                        <figcaption><small>02 &middot; 12 &middot; 2023</small>Sunday pancakes</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <div class="pic" style="--i:var(--img-g5)"></div>
+                        <figcaption><small>14 &middot; 02 &middot; 2024</small>Sea breeze, your hand</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <div class="pic" style="--i:var(--img-g6)"></div>
+                        <figcaption><small>31 &middot; 12 &middot; 2024</small>Tiny lights, big wishes</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
 
-            /**DANCE FESTIVAL DAILY TICKETS - 05-Jan-27**/
-            <button id='zbs-register-widget-btn-4'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790424">Register now</button><br><br>
+        <section id="quote" data-t="Promise">
+            <div class="q-wrap" id="qWrap">
+                <div class="pic" id="qBg" style="--i:var(--img-quote)"></div>
+                <div class="veil"></div>
+                <div class="q-in">
+                    <svg viewBox="0 0 24 24">
+                        <use href="#hrt" />
+                    </svg>
+                    <blockquote id="qText">
+                        <span class="ln"><span>&ldquo;In a sea of faces,</span></span>
+                        <span class="ln"><span>my heart will always</span></span>
+                        <span class="ln"><span>search for <em>yours</em>.&rdquo;</span></span>
+                    </blockquote>
+                    <cite>Every day, always</cite>
+                </div>
+            </div>
+        </section>
 
-            /**DANCE FESTIVAL DAILY TICKETS - 04-Jan-27**/
-            <button id='zbs-register-widget-btn-5'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790421"> Register now</button><br><br>
+        <section id="timeline" data-t="Journey">
+            <div class="sec-head rv b"><span class="tag">Our journey</span>
+                <h2>How we got <em>here</em></h2>
+            </div>
+            <div class="tl" id="tl">
+                <div class="tl-line"><b id="tlFill"></b></div>
+                <article class="tl-item"><i class="node"></i>
+                    <div class="tl-card">
+                        <div class="thumb">
+                            <div class="pic" style="--i:var(--img-t1)"></div>
+                        </div>
+                        <div class="tl-body"><time>Spring 2021</time>
+                            <h3>We met</h3>
+                            <p>A chance hello that quietly rearranged my whole world.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="tl-item"><i class="node"></i>
+                    <div class="tl-card">
+                        <div class="thumb">
+                            <div class="pic" style="--i:var(--img-t2)"></div>
+                        </div>
+                        <div class="tl-body"><time>Winter 2022</time>
+                            <h3>The three little words</h3>
+                            <p>Whispered on a quiet night, and never once taken back.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="tl-item"><i class="node"></i>
+                    <div class="tl-card">
+                        <div class="thumb">
+                            <div class="pic" style="--i:var(--img-t3)"></div>
+                        </div>
+                        <div class="tl-body"><time>Summer 2023</time>
+                            <h3>Our first trip</h3>
+                            <p>Wrong turns, right company, and a thousand tiny memories.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="tl-item"><i class="node"></i>
+                    <div class="tl-card">
+                        <div class="thumb">
+                            <div class="pic" style="--i:var(--img-t4)"></div>
+                        </div>
+                        <div class="tl-body"><time>Today</time>
+                            <h3>Our own little home</h3>
+                            <p>Two toothbrushes, one blanket, and a love that keeps growing.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
 
+        <section id="reasons" data-t="Reasons">
+            <div class="wrap">
+                <div class="sec-head rv b"><span class="tag">Why you</span>
+                    <h2>A few reasons I <em>love</em> you</h2>
+                </div>
+                <div class="cards">
+                    <div class="rv z" style="--d:0s">
+                        <div class="rc tilt">
+                            <div class="ico"><svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9" />
+                                    <path d="M8 14c1 1.6 2.4 2.4 4 2.4s3-.8 4-2.4M9 9.5h.01M15 9.5h.01" />
+                                </svg></div>
+                            <h3>Your laugh</h3>
+                            <p>It fills every room, and somehow makes the whole world feel lighter.</p>
+                        </div>
+                    </div>
+                    <div class="rv z" style="--d:.15s">
+                        <div class="rc tilt">
+                            <div class="ico"><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 21s-8-4.8-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.2-8 11-8 11z" />
+                                </svg></div>
+                            <h3>Your kindness</h3>
+                            <p>You care in the quiet, little ways that mean the most.</p>
+                        </div>
+                    </div>
+                    <div class="rv z" style="--d:.3s">
+                        <div class="rc tilt">
+                            <div class="ico"><svg viewBox="0 0 24 24">
+                                    <path d="M12 3l2.4 5 5.6.8-4 3.9.9 5.6L12 15.6 7.1 18.3l.9-5.6-4-3.9 5.6-.8z" />
+                                </svg></div>
+                            <h3>Everything else</h3>
+                            <p>Every little thing, even the ones I can't quite put into words.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat rv" style="--d:0s"><b data-to="1460">0</b><span>Days together</span></div>
+                    <div class="stat rv" style="--d:.15s"><b data-to="312">0</b><span>Sunsets shared</span></div>
+                    <div class="stat rv" style="--d:.3s"><b data-to="9999" data-plus="1">0</b><span>Reasons &amp;
+                            counting</span></div>
+                </div>
+            </div>
+        </section>
 
-            /**DANCE FESTIVAL DAILY TICKETS - 03-Jan-27**/
-            <button id='zbs-register-widget-btn-6'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790418">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 31st-Dec-2026**/
-            <button id='zbs-register-widget-btn-7'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790166"> Register now </button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 30th-Dec-2026**/
-            <button id='zbs-register-widget-btn-8'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790139"> Register now </button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 29th-Dec-2026**/
-            <button id='zbs-register-widget-btn-9'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790112">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 28th-Dec-2026**/
-            <button id='zbs-register-widget-btn-10'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790085">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 27th-Dec-2026**/
-            <button id='zbs-register-widget-btn-11'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790056">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 26th-Dec-2026**/
-            <button id='zbs-register-widget-btn-12'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790029">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 25th-Dec-2026**/
-            <button id='zbs-register-widget-btn-13'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000788088">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 24th-Dec-2026**/
-            <button id='zbs-register-widget-btn-14'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000788061">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 23rd-Dec-2026**/
-            <button id='zbs-register-widget-btn-15'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000788034">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 22nd-Dec-2026**/
-            <button id='zbs-register-widget-btn-16'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000788007">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 21st-Dec-2026**/
-            <button id='zbs-register-widget-btn-17'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000787150">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 20th-Dec-2026**/
-            <button id='zbs-register-widget-btn-18'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000787123">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 19th-Dec-2026**/
-            <button id='zbs-register-widget-btn-19'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000787092">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 18th-Dec-2026**/
-            <button id='zbs-register-widget-btn-20'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000787063">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 17th-Dec-2026**/
-            <button id='zbs-register-widget-btn-21'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000787036">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL DAILY TICKETS - 16th-Dec-2026**/
-            <button id='zbs-register-widget-btn-22'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000785398">Register now</button><br><br>
-
-            /**Test Registration**/
-            <button id='zbs-register-widget-btn-23'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000807008">Register Test ticket
-                Class</button><br><br>
-
-            /**DANCE FESTIVAL - SEASON TICKETS 2026**/
-            <button id='zbs-register-widget-btn-24'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000790415">Register now</button><br><br>
-
-            /**MUSIC FESTIVAL - SEASON TICKETS 2026**/
-            <button id='zbs-register-widget-btn-25'
-                style="padding: 12px;background: #4a74fa;border: 1px solid #4a74fa;color: #ffffff;font-weight: bold;text-transform: uppercase"
-                class="zbs-btn-loading" zbs-ticket-class-group-id="35258000000785371">Register now</button><br><br>
-            <link rel='stylesheet'
-                href='https://static.zohocdn.com/backstage/v1.0/styles/ticket-widget/v1.3/register-widget.min.css'>
-
+        <section id="finale" data-t="Forever">
+            <div class="pic" id="fBg" style="--i:var(--img-final)"></div>
+            <div class="veil"></div>
+            <svg class="bigheart" id="bigHeart" viewBox="0 0 24 24">
+                <path id="hPath"
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+            <div class="f-in">
+                <span class="tag rv">The last chapter</span>
+                <h2 class="rv" style="--d:.1s">Will you stay with me, <em>forever</em>?</h2>
+                <p class="rv" style="--d:.2s">Today, tomorrow, and every sunrise after &mdash; I choose you, again and
+                    again.</p>
+                <div class="rv z" style="--d:.3s"><button class="btn" id="yes">Yes, always <svg viewBox="0 0 24 24">
+                            <use href="#hrt" />
+                        </svg></button></div>
+                <div class="thanks" id="thanks">You just made my whole world. I love you.</div>
+            </div>
+            <footer>Made with all my heart</footer>
         </section>
     </main>
 
+    <script>
+        (() => {
+            const CODE = '1005';
+            const $ = s => document.querySelector(s);
+            const phone = $('#phone'), lock = $('#lock'), pdots = $('#pdots'), ptitle = $('#ptitle'), cancel = $('#cancel'), fx = $('#lfx');
+            const dots = [...pdots.children];
+            const root = document.documentElement;
+            let code = '', busy = false, done = false;
 
-    <footer id="contact">
-        <p>&copy; 2026 My Website</p>
-    </footer>
-
-</body>
-
-<script src='https://static.zohocdn.com/backstage/v1.0/javascript/ticket-widget/v1.3/register-widget.min.js'></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const btnElements = [
-            '#zbs-register-widget-btn', '#zbs-register-widget-btn-1', '#zbs-register-widget-btn-2',
-            '#zbs-register-widget-btn-3', '#zbs-register-widget-btn-4', '#zbs-register-widget-btn-5',
-            '#zbs-register-widget-btn-6', '#zbs-register-widget-btn-7', '#zbs-register-widget-btn-8',
-            '#zbs-register-widget-btn-9', '#zbs-register-widget-btn-10', '#zbs-register-widget-btn-11',
-            '#zbs-register-widget-btn-12', '#zbs-register-widget-btn-13', '#zbs-register-widget-btn-14',
-            '#zbs-register-widget-btn-15', '#zbs-register-widget-btn-16', '#zbs-register-widget-btn-17',
-            '#zbs-register-widget-btn-18', '#zbs-register-widget-btn-19', '#zbs-register-widget-btn-20',
-            '#zbs-register-widget-btn-21', '#zbs-register-widget-btn-22', '#zbs-register-widget-btn-23',
-            '#zbs-register-widget-btn-24', '#zbs-register-widget-btn-25'
-        ];
-
-        const groupMap = {};
-
-        btnElements.forEach((id) => {
-            const elem = document.querySelector(id);
-            if (elem) {
-                const groupId = elem.getAttribute('zbs-ticket-class-group-id');
-                if (groupId) {
-                    if (!groupMap[groupId]) {
-                        groupMap[groupId] = [];
-                    }
-                    groupMap[groupId].push(id);
-                }
+            function tick() {
+                if (!$('#clock')) return;
+                const d = new Date(), h = d.getHours() % 12 || 12, m = String(d.getMinutes()).padStart(2, '0');
+                $('#clock').textContent = h + ':' + m; $('#stime').textContent = h + ':' + m;
+                $('#date').textContent = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
             }
-        });
+            tick(); setInterval(tick, 1000);
 
-        if (window.ZBSCheckOutWidget && typeof window.ZBSCheckOutWidget._createWidget === 'function') {
-            const widget = window.ZBSCheckOutWidget._createWidget({
-                eventUrl: 'https://themusicacademy.zohobackstage.in/embed/100thAnnualConcerts202620thAnnualDanceFestival2027/buyTickets',
-                modal: true,
-                clickableElements: [],
-                ticketClassIdVsSelectorMap: {},
-                ticketGroupIdVsSelectorMap: groupMap,
-                skipValidation: true,
-                widgetOptions: {
-                    theme: {
-                        primaryButton: {
-                            backgroundColor: '#4a74fa',
-                            textColor: '#ffffff',
-                            borderColor: '#4a74fa'
-                        },
-                        eventHeader: {
-                            backgroundColor: '#4a74fa',
-                            textColor: '#ffffff'
-                        }
-                    },
-                    visibilityOptions: {
-                        showEventHeader: true,
-                        showCheckoutProgress: true,
-                        showBSBranding: true,
-                        showEventDate: true,
-                        showEventVenue: true,
-                        ticketClassIds: [],
-                        ticketItemGroupIds: []
-                    },
-                    redirectUrl: '',
-                    affiliate: '',
-                    promoCode: '',
-                    showFillInfo: false,
-                    showRegisterModalWithInfoPage: false,
-                    messageContents: {
-                        'lbl.closed': 'closed',
-                        'lbl.yet.to.start': 'yet to start',
-                        'lbl.sales.ended': 'sales ended',
-                        'lbl.unavailable': 'unavailable',
-                        'lbl.sold.out': 'sold out',
-                        'lbl.open': 'register now'
-                    }
-                }
+            function fit() {
+                const s = Math.min(1, innerHeight * .94 / 844, innerWidth * .94 / 390);
+                phone.style.setProperty('--s', s);
+            }
+            fit(); addEventListener('resize', fit);
+
+            const pal = ['#ff5c85', '#ff9db3', '#ecc98c', '#ffffff'];
+            function heart(x, y, o = {}) {
+                if (fx.childElementCount > 70) return;
+                const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                s.setAttribute('class', 'h'); s.innerHTML = '<use href="#hrt"/>';
+                const st = s.style;
+                st.left = x + 'px'; st.top = y + 'px';
+                st.setProperty('--s', (o.s || 10 + Math.random() * 16) + 'px');
+                st.setProperty('--c', pal[Math.random() * pal.length | 0]);
+                st.setProperty('--dx', ((Math.random() - .5) * (o.sp || 80)) + 'px');
+                st.setProperty('--dy', -(o.rise || 90) * (.6 + Math.random() * .8) + 'px');
+                st.setProperty('--r', ((Math.random() - .5) * 70) + 'deg');
+                st.setProperty('--t', (o.t || 1.6) + Math.random() * .8 + 's');
+                s.addEventListener('animationend', () => s.remove());
+                fx.appendChild(s);
+            }
+
+            $('#torch').addEventListener('click', () => {
+                const t = root.dataset.theme === 'dark' ? 'light' : 'dark';
+                root.dataset.theme = t; try { localStorage.setItem('loveTheme', t) } catch (e) { }
+                const f = $('#flash'); f.classList.add('on'); setTimeout(() => f.classList.remove('on'), 140);
             });
-        } else {
-            console.error('ZBSCheckOutWidget is not loaded.');
-        }
-    });
-</script>
+            $('#cam').addEventListener('click', e => {
+                const r = e.currentTarget.getBoundingClientRect();
+                for (let i = 0; i < 12; i++)setTimeout(() => heart(r.left + r.width / 2, r.top, { rise: 200, sp: 160 }), i * 50);
+            });
 
+            function openPass() { phone.classList.add('passing'); $('#pass').setAttribute('aria-hidden', 'false') }
+            function closePass() { phone.classList.remove('passing'); $('#pass').setAttribute('aria-hidden', 'true'); code = ''; render() }
+
+            let sy = null, dy = 0;
+            lock.addEventListener('pointerdown', e => { if (e.target.closest('button')) return; sy = e.clientY; dy = 0; lock.style.transition = 'none' });
+            addEventListener('pointermove', e => {
+                if (sy === null) return;
+                dy = Math.min(0, e.clientY - sy);
+                lock.style.transform = `translateY(${dy}px)`; lock.style.opacity = Math.max(.2, 1 + dy / 420);
+            });
+            addEventListener('pointerup', () => {
+                if (sy === null) return;
+                lock.style.transition = ''; lock.style.transform = ''; lock.style.opacity = '';
+                if (dy < -70) openPass();
+                sy = null; dy = 0;
+            });
+            $('#swipe').addEventListener('click', openPass);
+            $('#homebar').addEventListener('click', () => phone.classList.contains('passing') ? closePass() : openPass());
+
+            const letters = { 2: 'ABC', 3: 'DEF', 4: 'GHI', 5: 'JKL', 6: 'MNO', 7: 'PQRS', 8: 'TUV', 9: 'WXYZ' };
+            const pad = $('#pad');
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].forEach(n => {
+                const b = document.createElement('button');
+                b.className = 'key' + (n === 0 ? ' zero' : '');
+                b.innerHTML = `<b>${n}</b><small>${letters[n] || ''}</small>`;
+                b.addEventListener('click', () => press(String(n)));
+                pad.appendChild(b);
+            });
+
+            function render() {
+                dots.forEach((d, i) => d.classList.toggle('on', i < code.length));
+                cancel.textContent = code ? 'Delete' : 'Cancel';
+            }
+            function press(d) {
+                if (busy || code.length >= 4) return;
+                code += d; render();
+                if (code.length === 4) setTimeout(check, 200);
+            }
+            cancel.addEventListener('click', () => {
+                if (busy) return;
+                if (code) { code = code.slice(0, -1); render() } else closePass();
+            });
+            let ht;
+            $('#hint').addEventListener('click', () => {
+                const h = $('#hintTxt'); h.classList.add('on'); clearTimeout(ht); ht = setTimeout(() => h.classList.remove('on'), 3500);
+            });
+            addEventListener('keydown', e => {
+                if (done) return;
+                if (!phone.classList.contains('passing')) {
+                    if (/^\d$/.test(e.key) || e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowUp') { openPass(); if (/^\d$/.test(e.key)) press(e.key) }
+                    return;
+                }
+                if (/^\d$/.test(e.key)) press(e.key);
+                else if (e.key === 'Backspace' && code && !busy) { code = code.slice(0, -1); render() }
+                else if (e.key === 'Escape' && !busy) closePass();
+            });
+
+            function check() {
+                busy = true;
+                code === CODE ? success() : fail();
+            }
+            function fail() {
+                pdots.classList.add('shake'); ptitle.textContent = 'Wrong passcode, try again';
+                if (navigator.vibrate) navigator.vibrate([60, 40, 60]);
+                setTimeout(() => { pdots.classList.remove('shake'); code = ''; render(); busy = false }, 550);
+                setTimeout(() => { if (!busy) ptitle.textContent = 'Enter Passcode' }, 1800);
+            }
+            function success() {
+                pdots.classList.add('ok'); ptitle.textContent = 'Unlocked';
+                $('#padlock').classList.add('open');
+                const r = phone.getBoundingClientRect();
+                for (let i = 0; i < 26; i++)setTimeout(() => heart(r.left + r.width / 2, r.top + r.height * .4, { rise: 260, sp: 300, t: 1.4 }), i * 35);
+                setTimeout(() => $('#welcome').classList.add('on'), 600);
+                done = true;
+                setTimeout(() => { phone.classList.add('leave'); $('#lockApp').classList.add('out') }, 1900);
+                setTimeout(() => { window.__startSite && window.__startSite() }, 2100);
+                setTimeout(() => { $('#lockApp').remove() }, 3200);
+            }
+        })();
+    </script>
+    <script>
+        (() => {
+            const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
+            const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+            const lerp = (a, b, t) => a + (b - a) * t;
+            const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            const smooth = t => t * t * (3 - 2 * t);
+            const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+            const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+            const smoothOn = fine && !reduce;
+            const root = document.documentElement;
+            window.__startSite = () => { root.classList.remove('locked'); root.classList.add('go') };
+
+            $('#mode').addEventListener('click', () => {
+                const t = root.dataset.theme === 'dark' ? 'light' : 'dark';
+                root.dataset.theme = t; try { localStorage.setItem('loveTheme', t) } catch (e) { }
+            });
+
+            (() => {
+                const h = $('#split'); let i = 0;
+                const out = [...h.childNodes].flatMap(n => {
+                    const em = n.nodeName === 'EM';
+                    return n.textContent.split(/\s+/).filter(Boolean).map(w =>
+                        `<span class="w${em ? ' em' : ''}">` + [...w].map(c => `<span class="l" style="--i:${i++}">${c}</span>`).join('') + '</span>');
+                });
+                h.setAttribute('aria-label', h.textContent); h.innerHTML = out.join(' ');
+                const wd = $('#words');
+                wd.innerHTML = wd.textContent.split(/\s+/).map(w => `<span class="wd">${w}</span>`).join(' ');
+            })();
+
+            const sections = $$('main > section');
+            const dotsNav = $('#dots');
+            sections.forEach(s => {
+                const a = document.createElement('a'); a.href = '#' + s.id; a.dataset.t = s.dataset.t; a.setAttribute('aria-label', s.dataset.t); dotsNav.appendChild(a);
+            });
+            const dotEls = $$('a', dotsNav);
+
+            let cur = scrollY, tar = scrollY, lastY = scrollY, vel = 0;
+            const maxY = () => document.documentElement.scrollHeight - innerHeight;
+            if (smoothOn) {
+                addEventListener('wheel', e => {
+                    if (e.ctrlKey) return;
+                    e.preventDefault();
+                    if (root.classList.contains('locked')) return;
+                    const d = e.deltaMode === 1 ? 34 : e.deltaMode === 2 ? innerHeight : 1;
+                    tar = clamp(tar + e.deltaY * d, 0, maxY());
+                }, { passive: false });
+                addEventListener('scroll', () => { if (Math.abs(scrollY - cur) > 2) { cur = tar = scrollY } });
+            }
+            function goTo(y) {
+                y = clamp(y, 0, maxY());
+                if (smoothOn) tar = y; else scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+            }
+            document.addEventListener('click', e => {
+                const a = e.target.closest('a[href^="#"]');
+                if (!a) return;
+                const t = $(a.getAttribute('href'));
+                if (!t) return;
+                e.preventDefault();
+                goTo(a.getAttribute('href') === '#hero' ? 0 : t.getBoundingClientRect().top + scrollY);
+            });
+
+            const fx = $('#fx');
+            const pal = ['#ff5c85', '#ff9db3', '#ecc98c', '#ffffff'];
+            function heart(x, y, o = {}) {
+                if (fx.childElementCount > 80) return;
+                const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                s.setAttribute('class', 'h'); s.innerHTML = '<use href="#hrt"/>';
+                const st = s.style;
+                st.left = x + 'px'; st.top = y + 'px';
+                st.setProperty('--s', (o.s || 9 + Math.random() * 15) + 'px');
+                st.setProperty('--c', pal[Math.random() * pal.length | 0]);
+                st.setProperty('--dx', (o.dx !== undefined ? o.dx : (Math.random() - .5) * (o.sp || 70)) + 'px');
+                st.setProperty('--dy', (o.dy !== undefined ? o.dy : -(o.rise || 70) * (.6 + Math.random() * .8)) + 'px');
+                st.setProperty('--r', ((Math.random() - .5) * 80) + 'deg');
+                st.setProperty('--t', (o.t || 1.5) + Math.random() * .8 + 's');
+                s.addEventListener('animationend', () => s.remove());
+                fx.appendChild(s);
+            }
+
+            const ring = $('#ring'), dot = $('#dot');
+            let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, lastHeart = 0, lastScrollHeart = 0;
+            if (fine) {
+                document.body.classList.add('has-cursor');
+                addEventListener('pointermove', e => {
+                    mx = e.clientX; my = e.clientY;
+                    dot.style.transform = `translate3d(${mx}px,${my}px,0)`;
+                    const n = performance.now();
+                    if (n - lastHeart > 110) { lastHeart = n; heart(mx, my, { rise: 45, sp: 34, t: 1.1 }) }
+                });
+                document.addEventListener('pointerover', e => ring.classList.toggle('hot', !!e.target.closest('a,button,.tilt,.card')));
+            } else {
+                addEventListener('touchstart', e => {
+                    const t = e.touches[0];
+                    for (let i = 0; i < 3; i++)heart(t.clientX, t.clientY, { rise: 90, sp: 80 });
+                }, { passive: true });
+            }
+
+            $$('.tilt').forEach(c => {
+                c.addEventListener('pointermove', e => {
+                    const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+                    c.style.transform = `rotateY(${(x - .5) * 14}deg) rotateX(${(.5 - y) * 14}deg)`;
+                    c.style.setProperty('--mx', x * 100 + '%'); c.style.setProperty('--my', y * 100 + '%');
+                });
+                c.addEventListener('pointerleave', () => { c.style.transform = '' });
+            });
+
+            const io = new IntersectionObserver(es => es.forEach(e => {
+                if (!e.isIntersecting) return;
+                e.target.classList.add('in'); io.unobserve(e.target);
+                if (e.target.classList.contains('stat')) count($('b', e.target));
+            }), { threshold: .16, rootMargin: '0px 0px -6% 0px' });
+            $$('.rv,.tl-item').forEach(el => io.observe(el));
+            function count(b) {
+                const to = +b.dataset.to, plus = b.dataset.plus, t0 = performance.now(), dur = 2200;
+                (function step(n) {
+                    const p = clamp((n - t0) / dur);
+                    b.textContent = Math.round(to * (1 - Math.pow(1 - p, 4))).toLocaleString('en-US') + (p === 1 && plus ? '+' : '');
+                    if (p < 1) requestAnimationFrame(step);
+                })(t0);
+            }
+
+            $('#yes').addEventListener('click', e => {
+                const r = e.currentTarget.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+                for (let i = 0; i < 46; i++) {
+                    const a = Math.random() * Math.PI * 2, d = 120 + Math.random() * 320;
+                    setTimeout(() => heart(cx, cy, { s: 12 + Math.random() * 24, dx: Math.cos(a) * d, dy: Math.sin(a) * d, t: 1.6 }), i * 14);
+                }
+                $('#thanks').classList.add('on');
+            });
+
+            const heroBg = $('#heroBg'), heroIn = $('#heroIn'), hero = $('#hero');
+            const archClip = $('#archClip'), archPic = $('#archPic'), arch = $('#arch'), wds = $$('.wd'), wordsEl = $('#words');
+            const story = $('#story'), iTrack = $('#iTrack'), tTrack = $('#tTrack'), chaps = $$('.chap'), slidePics = $$('.slide .pic'), bgPics = $$('#storyBg .pic'), badge = $('#badge'), sFill = $('#sFill');
+            const gal = $('#gallery'), gTrack = $('#gTrack'), ghost = $('#ghost'), gHead = $('#gHead'), cards = $$('.card');
+            const quote = $('#quote'), qWrap = $('#qWrap'), qBg = $('#qBg'), qLines = $$('#qText .ln span');
+            const tl = $('#tl'), tlFill = $('#tlFill');
+            const fin = $('#finale'), fBg = $('#fBg'), hPath = $('#hPath'), bigHeart = $('#bigHeart');
+            const barFill = $('#barFill');
+            const N = 4;
+            let pathLen = 0, activeDot = -1, lastHero = 0;
+            try { pathLen = hPath.getTotalLength() } catch (e) { pathLen = 80 }
+            hPath.style.strokeDasharray = pathLen; hPath.style.strokeDashoffset = pathLen;
+
+            function pinProgress(sec, r) { return clamp(-r.top / Math.max(1, r.height - sec.firstElementChild.offsetHeight)) }
+
+            function frame(now) {
+                if (smoothOn) {
+                    cur = lerp(cur, tar, .085);
+                    if (Math.abs(tar - cur) < .15) cur = tar;
+                    if (Math.abs(scrollY - cur) > .01) scrollTo(0, cur);
+                }
+                const y = smoothOn ? cur : scrollY, vh = innerHeight, vw = innerWidth;
+                vel = lerp(vel, y - lastY, .25); lastY = y;
+
+                barFill.style.transform = `scaleX(${maxY() > 0 ? clamp(y / maxY()) : 0})`;
+
+                if (fine) {
+                    rx = lerp(rx, mx, .17); ry = lerp(ry, my, .17);
+                    const dx = mx - rx, dy = my - ry, sp = Math.hypot(dx, dy), av = Math.abs(vel);
+                    const st = 1 + Math.min(sp * .02 + av * .025, .9);
+                    ring.style.transform = `translate3d(${rx}px,${ry}px,0) rotate(${Math.atan2(dy, dx)}rad) scale(${st},${1 / (1 + (st - 1) * .45)})`;
+                    const fast = av > 6;
+                    ring.classList.toggle('fast', fast);
+                    if (av > 12 && now - lastScrollHeart > 100) {
+                        lastScrollHeart = now;
+                        heart(mx + (Math.random() - .5) * 50, my, { rise: -Math.sign(vel) * -110, sp: 60, t: 1.4, dy: -Math.sign(vel) * 90 * (.6 + Math.random()) });
+                    }
+                } else if (Math.abs(vel) > 22 && now - lastScrollHeart > 260) {
+                    lastScrollHeart = now;
+                    heart(Math.random() * vw, vh * (Math.random() > .5 ? .85 : .2), { rise: 100, sp: 60, s: 12 + Math.random() * 12 });
+                }
+
+                if (y < vh * 1.4) {
+                    hero.style.visibility = '';
+                    const p = clamp(y / vh);
+                    heroBg.style.transform = `translate3d(0,${y * .3}px,0) scale(${1 + p * .2})`;
+                    heroIn.style.transform = `translate3d(0,${-p * 130}px,0) scale(${1 - p * .08})`;
+                    heroIn.style.opacity = clamp(1 - p * 1.35);
+                    if (now - lastHero > 520 && !reduce && root.classList.contains('go')) { lastHero = now; heart(Math.random() * vw, vh + 10, { s: 10 + Math.random() * 22, rise: -(vh * .55 + Math.random() * vh * .4), dx: (Math.random() - .5) * 160, dy: -(vh * .5 + Math.random() * vh * .4), t: 5 }) }
+                } else hero.style.visibility = 'hidden';
+
+                const ar = arch.getBoundingClientRect();
+                if (ar.top < vh && ar.bottom > 0) {
+                    const pa = ease(clamp((vh * .95 - ar.top) / (vh * .7)));
+                    archClip.style.clipPath = `inset(${(1 - pa) * 38}% round ${999 - pa * 970}px)`;
+                    archPic.style.transform = `scale(${1.35 - .35 * pa}) translate3d(0,${(1 - pa) * 40}px,0)`;
+                }
+                const wr = wordsEl.getBoundingClientRect();
+                if (wr.top < vh && wr.bottom > 0) {
+                    const pw = clamp((vh * .88 - wr.top) / (vh * .5));
+                    wds.forEach((w, i) => { w.style.opacity = .14 + .86 * clamp(pw * (wds.length + 4) - i) });
+                }
+
+                const sr = story.getBoundingClientRect();
+                if (sr.top < vh && sr.bottom > 0) {
+                    const sp = pinProgress(story, sr), t = sp * (N - 1), i = Math.min(N - 2, Math.floor(t)), f = t - i;
+                    const pos = i + smooth(clamp((f - .22) / .56));
+                    const tf = `translate3d(0,${-pos / N * 100}%,0)`;
+                    iTrack.style.transform = tf; tTrack.style.transform = tf;
+                    for (let k = 0; k < N; k++) {
+                        const d = Math.abs(pos - k);
+                        slidePics[k].style.transform = `scale(${1 + Math.min(d, 1) * .22})`;
+                        chaps[k].style.opacity = clamp(1 - d * 1.5);
+                        chaps[k].style.transform = `translate3d(${Math.min(d, 1) * 40}px,0,0)`;
+                        bgPics[k].style.opacity = clamp(1 - d);
+                    }
+                    badge.textContent = String(Math.round(pos) + 1).padStart(2, '0') + ' / 0' + N;
+                    sFill.style.transform = `scaleY(${sp})`;
+                }
+
+                const gr = gal.getBoundingClientRect();
+                if (gr.top < vh && gr.bottom > 0) {
+                    const gp = pinProgress(gal, gr), dist = Math.max(0, gTrack.scrollWidth - vw), gx = -gp * dist;
+                    gTrack.style.transform = `translate3d(${gx}px,0,0)`;
+                    ghost.style.transform = `translate3d(${gx * .35}px,-50%,0)`;
+                    gHead.style.transform = `translate3d(${-gp * 260}px,0,0)`;
+                    gHead.style.opacity = clamp(1 - gp * 4);
+                    cards.forEach(c => {
+                        const d = (c.offsetLeft + c.offsetWidth / 2 + gx - vw / 2) / vw;
+                        c.style.transform = `translate3d(0,${Math.abs(d) * 44}px,0) rotate(${d * 7}deg) scale(${1 - Math.min(Math.abs(d), 1) * .1})`;
+                        c.firstElementChild.style.transform = `translate3d(${-d * 70}px,0,0)`;
+                    });
+                }
+
+                const qr = quote.getBoundingClientRect();
+                if (qr.top < vh && qr.bottom > 0) {
+                    const qp = clamp((vh - qr.top) / (vh * .9));
+                    qWrap.style.clipPath = `circle(${ease(qp) * 78}% at 50% 50%)`;
+                    qBg.style.transform = `translate3d(0,${-qr.top * .14}px,0) scale(${1.25 - qp * .15})`;
+                    const lp = clamp((qp - .4) / .5);
+                    qLines.forEach((l, k) => { l.style.transform = `translate3d(0,${(1 - ease(clamp(lp * 3 - k))) * 108}%,0)` });
+                }
+
+                const tr = tl.getBoundingClientRect();
+                if (tr.top < vh && tr.bottom > 0) tlFill.style.transform = `scaleY(${clamp((vh * .55 - tr.top) / tr.height)})`;
+
+                const fr = fin.getBoundingClientRect();
+                if (fr.top < vh && fr.bottom > 0) {
+                    const fp = clamp((vh - fr.top) / (vh * 1.1));
+                    fBg.style.transform = `scale(${1.4 - .4 * ease(fp)})`;
+                    hPath.style.strokeDashoffset = pathLen * (1 - clamp((fp - .1) / .6));
+                    hPath.style.fillOpacity = clamp((fp - .72) / .28) * .32;
+                    bigHeart.classList.toggle('beat', fp > .97);
+                }
+
+                let ad = 0;
+                sections.forEach((s, k) => { const r = s.getBoundingClientRect(); if (r.top <= vh * .5 && r.bottom > vh * .5) ad = k });
+                if (ad !== activeDot) { activeDot = ad; dotEls.forEach((d, k) => d.classList.toggle('on', k === ad)) }
+
+                requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+        })();
+    </script>
+</body>
 
 </html>
