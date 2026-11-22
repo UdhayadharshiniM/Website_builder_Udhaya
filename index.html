@@ -38,6 +38,26 @@
             --img-t4: url("https://picsum.photos/seed/love-t4/800/500");
             --img-final: url("https://picsum.photos/seed/love-final/1920/1200");
 
+            --img-p1-0: url("https://picsum.photos/seed/love-p1-0/1920/1200");
+            --img-p1-1: url("https://picsum.photos/seed/love-p1-1/900/1100");
+            --img-p1-2: url("https://picsum.photos/seed/love-p1-2/900/1100");
+            --img-p1-3: url("https://picsum.photos/seed/love-p1-3/900/1100");
+            --img-p2-0: url("https://picsum.photos/seed/love-p2-0/1920/1200");
+            --img-p2-1: url("https://picsum.photos/seed/love-p2-1/900/1100");
+            --img-p2-2: url("https://picsum.photos/seed/love-p2-2/900/1100");
+            --img-p2-3: url("https://picsum.photos/seed/love-p2-3/900/1100");
+            --img-p3-0: url("https://picsum.photos/seed/love-p3-0/1920/1200");
+            --img-p3-1: url("https://picsum.photos/seed/love-p3-1/900/1100");
+            --img-p3-2: url("https://picsum.photos/seed/love-p3-2/900/1100");
+            --img-p3-3: url("https://picsum.photos/seed/love-p3-3/900/1100");
+            --img-p4-0: url("https://picsum.photos/seed/love-p4-0/1920/1200");
+            --img-p4-1: url("https://picsum.photos/seed/love-p4-1/900/1100");
+            --img-p4-2: url("https://picsum.photos/seed/love-p4-2/900/1100");
+            --img-p4-3: url("https://picsum.photos/seed/love-p4-3/900/1100");
+            --img-p4-4: url("https://picsum.photos/seed/love-p4-4/900/1100");
+            --img-p4-5: url("https://picsum.photos/seed/love-p4-5/900/1100");
+            --img-p4-6: url("https://picsum.photos/seed/love-p4-6/900/1100");
+
             --serif: "Playfair Display", Georgia, serif;
             --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
             --bg: #17050d;
@@ -389,18 +409,18 @@
         }
 
         .cur-dot {
-            width: 7px;
-            height: 7px;
-            margin: -3.5px 0 0 -3.5px;
+            width: 5px;
+            height: 5px;
+            margin: -2.5px 0 0 -2.5px;
             background: var(--gold);
             transform: rotate(45deg);
             box-shadow: 0 0 10px var(--gold)
         }
 
         .cur-ring {
-            width: 34px;
-            height: 34px;
-            margin: -17px 0 0 -17px
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px
         }
 
         .cur-ring svg {
@@ -415,7 +435,7 @@
         }
 
         .cur-ring.hot svg {
-            transform: scale(1.6);
+            transform: scale(1.4);
             fill: var(--rose);
             fill-opacity: .35
         }
@@ -2100,6 +2120,513 @@
                 transition-duration: .01ms !important
             }
         }
+
+        html.page-open,
+        html.page-open body {
+            overflow: hidden
+        }
+
+        .chap-btn {
+            margin-top: 1.6rem;
+            align-self: flex-start;
+            padding: .85rem 1.7rem;
+            font-size: .82rem
+        }
+
+        .btn.outline {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--ink);
+            box-shadow: none
+        }
+
+        .btn.outline:hover {
+            background: linear-gradient(135deg, var(--rose), #ff8f6b);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 14px 40px rgba(255, 92, 133, .4)
+        }
+
+        .btn.outline svg {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        #cover {
+            position: fixed;
+            inset: 0;
+            z-index: 950;
+            pointer-events: none;
+            display: none;
+            overflow: hidden
+        }
+
+        #cover .blinds {
+            display: none;
+            position: absolute;
+            inset: 0
+        }
+
+        #cover.blinds-on .blinds {
+            display: flex
+        }
+
+        #cover .blinds i {
+            flex: 1;
+            margin-right: -1px;
+            background: linear-gradient(180deg, #1b0830, #7a1034);
+            transform: scaleY(0)
+        }
+
+        #cover .hcover {
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 80px;
+            fill: var(--rose);
+            transform: translate(-50%, -50%) scale(0)
+        }
+
+        #cover.heart-on .hcover {
+            display: block
+        }
+
+        .page {
+            position: fixed;
+            inset: 0;
+            z-index: 900;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: var(--bg);
+            color: var(--ink);
+            visibility: hidden;
+            overscroll-behavior: contain
+        }
+
+        .page.open {
+            visibility: visible
+        }
+
+        .pbar {
+            position: sticky;
+            top: 0;
+            z-index: 6;
+            height: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1rem clamp(1rem, 3vw, 2.5rem);
+            pointer-events: none
+        }
+
+        .pbar>* {
+            pointer-events: auto
+        }
+
+        .pback {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .6rem 1.2rem;
+            font-size: .82rem;
+            letter-spacing: .06em;
+            background: var(--card);
+            border: 1px solid var(--line);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 99px;
+            transition: transform .5s var(--ease)
+        }
+
+        .pback:hover {
+            transform: translateX(-3px)
+        }
+
+        .pback svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        .phero {
+            position: relative;
+            height: 80vh;
+            height: 80svh;
+            min-height: 440px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden
+        }
+
+        .phero .pic {
+            inset: -8% 0;
+            will-change: transform
+        }
+
+        .ptitle {
+            position: relative;
+            z-index: 2;
+            padding: 0 clamp(1.25rem, 6vw, 6rem) clamp(2.5rem, 8vh, 5rem);
+            max-width: 900px;
+            will-change: transform, opacity
+        }
+
+        .ptitle h2 {
+            font-size: clamp(2.8rem, 9vw, 7.5rem)
+        }
+
+        .ptitle p {
+            color: var(--muted);
+            max-width: 32rem;
+            margin-top: 1rem
+        }
+
+        .pbody {
+            position: relative;
+            padding: clamp(4rem, 10vw, 8rem) 0;
+            background: var(--bg)
+        }
+
+        .pend {
+            padding: 3rem 1.25rem 5rem;
+            text-align: center;
+            background: var(--bg)
+        }
+
+        .ph {
+            position: relative;
+            overflow: hidden
+        }
+
+        .p1-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(2rem, 6vw, 5rem);
+            align-items: center
+        }
+
+        .letter {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: clamp(1.6rem, 4vw, 3rem);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px)
+        }
+
+        .letter p {
+            font-family: var(--serif);
+            font-size: clamp(1.1rem, 2.1vw, 1.45rem);
+            line-height: 1.75;
+            margin-bottom: 1.2rem
+        }
+
+        .letter p:first-of-type::first-letter {
+            float: left;
+            font-size: 3.6em;
+            line-height: .85;
+            margin: .08em .1em 0 0;
+            color: var(--rose)
+        }
+
+        .sign {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--rose2)
+        }
+
+        .pols {
+            position: relative;
+            height: clamp(600px, 52vw, 720px)
+        }
+
+        .pol {
+            position: absolute;
+            width: min(250px, 56%);
+            padding: 12px 12px 14px;
+            background: #fff8f2;
+            color: #42101f;
+            box-shadow: 0 24px 50px rgba(0, 0, 0, .4);
+            will-change: transform
+        }
+
+        .pol .ph {
+            aspect-ratio: 4/5
+        }
+
+        .pol figcaption {
+            font-family: var(--serif);
+            font-style: italic;
+            text-align: center;
+            padding-top: .7rem
+        }
+
+        .pol:nth-child(1) {
+            top: 0;
+            left: 2%
+        }
+
+        .pol:nth-child(2) {
+            top: 28%;
+            right: 0
+        }
+
+        .pol:nth-child(3) {
+            top: 56%;
+            left: 12%
+        }
+
+        .p2-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: clamp(2rem, 6vw, 5rem)
+        }
+
+        .p2-img {
+            position: sticky;
+            top: 6rem;
+            align-self: start;
+            aspect-ratio: 3/4;
+            border-radius: 24px;
+            overflow: hidden;
+            outline: 1px solid var(--line);
+            outline-offset: 10px;
+            box-shadow: 0 40px 90px rgba(0, 0, 0, .4)
+        }
+
+        .p2-img .pic {
+            will-change: transform
+        }
+
+        .sched {
+            list-style: none;
+            display: grid;
+            gap: clamp(2rem, 5vw, 3.5rem);
+            padding-left: 2rem;
+            border-left: 1px solid var(--line);
+            align-content: start
+        }
+
+        .sched li {
+            position: relative
+        }
+
+        .sched li::before {
+            content: "";
+            position: absolute;
+            left: calc(-2rem - 5px);
+            top: .5rem;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--rose);
+            box-shadow: 0 0 0 5px rgba(255, 92, 133, .2)
+        }
+
+        .sched time {
+            font-size: .7rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--gold)
+        }
+
+        .sched h3 {
+            font-size: clamp(1.6rem, 3vw, 2.3rem);
+            margin: .3rem 0 .5rem
+        }
+
+        .sched p {
+            color: var(--muted)
+        }
+
+        .p2-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: clamp(2rem, 5vw, 3.5rem)
+        }
+
+        .p2-row .ph {
+            aspect-ratio: 4/3;
+            border-radius: 20px
+        }
+
+        .menu {
+            margin-top: clamp(3rem, 7vw, 5rem);
+            text-align: center;
+            border: 1px solid var(--line);
+            outline: 1px solid var(--line);
+            outline-offset: 8px;
+            border-radius: 12px;
+            padding: 2.5rem 1.5rem;
+            background: var(--card)
+        }
+
+        .menu h3 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            margin-bottom: 1rem
+        }
+
+        .menu p {
+            color: var(--muted);
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-size: .78rem;
+            line-height: 2.2
+        }
+
+        .p3 {
+            background: radial-gradient(1.5px 1.5px at 12% 18%, var(--gold), transparent), radial-gradient(1px 1px at 28% 62%, #fff, transparent), radial-gradient(1.5px 1.5px at 44% 30%, var(--rose2), transparent), radial-gradient(1px 1px at 63% 78%, var(--gold), transparent), radial-gradient(1.5px 1.5px at 78% 22%, #fff, transparent), radial-gradient(1px 1px at 90% 55%, var(--rose2), transparent), linear-gradient(180deg, var(--bg2), var(--bg))
+        }
+
+        .promises {
+            list-style: none;
+            display: grid;
+            gap: clamp(1.5rem, 4vw, 3rem)
+        }
+
+        .promises li {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem clamp(1.2rem, 4vw, 3rem);
+            align-items: center;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: clamp(1.2rem, 3vw, 2rem)
+        }
+
+        .pn {
+            font-family: var(--serif);
+            font-size: clamp(3.2rem, 9vw, 7rem);
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--gold);
+            transition: color 1.2s var(--ease), -webkit-text-stroke-color 1.2s
+        }
+
+        .promises li.in .pn {
+            color: rgba(255, 92, 133, .28);
+            -webkit-text-stroke-color: var(--rose)
+        }
+
+        .promises p {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(1.3rem, 3vw, 2.2rem);
+            line-height: 1.3
+        }
+
+        .lights-wrap {
+            overflow: hidden;
+            padding: clamp(3rem, 8vw, 6rem) 0 1rem
+        }
+
+        .lights {
+            display: flex;
+            gap: 1rem;
+            width: max-content;
+            margin-left: -6vw;
+            will-change: transform
+        }
+
+        .lights .ph {
+            width: clamp(220px, 34vw, 420px);
+            aspect-ratio: 4/5;
+            border-radius: 20px
+        }
+
+        .lights .ph:nth-child(2) {
+            margin-top: 3rem
+        }
+
+        .lights-cap {
+            text-align: center;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            font-size: .72rem;
+            color: var(--gold);
+            margin-top: 2rem
+        }
+
+        .mosaic {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: clamp(120px, 18vw, 220px);
+            gap: 1rem
+        }
+
+        .mosaic .ph {
+            border-radius: 20px
+        }
+
+        .mosaic .a {
+            grid-column: span 2;
+            grid-row: span 2
+        }
+
+        .mosaic .b {
+            grid-row: span 2
+        }
+
+        .mosaic .e,
+        .mosaic .f {
+            grid-column: span 2
+        }
+
+        .p4-quote {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(1.8rem, 5vw, 3.6rem);
+            text-align: center;
+            max-width: 900px;
+            margin: clamp(3rem, 8vw, 6rem) auto 0;
+            line-height: 1.25
+        }
+
+        .p4-sub {
+            text-align: center;
+            margin-top: 1.5rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            font-size: .72rem;
+            color: var(--gold)
+        }
+
+        @media(max-width:899px) {
+
+            .p1-grid,
+            .p2-grid {
+                grid-template-columns: 1fr
+            }
+
+            .pols {
+                height: 620px
+            }
+
+            .p2-img {
+                position: relative;
+                top: 0;
+                aspect-ratio: 4/3;
+                outline: 0
+            }
+
+            .mosaic {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .mosaic .b {
+                grid-row: span 2
+            }
+        }
     </style>
 </head>
 
@@ -2303,21 +2830,34 @@
                             <div class="chap"><span class="num">01</span>
                                 <h3>The first hello</h3>
                                 <p>It started with a smile across a crowded room and a heartbeat that forgot its rhythm.
-                                </p>
+                                </p><button class="btn outline chap-btn" data-page="1">Open this chapter <svg
+                                        viewBox="0 0 24 24">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg></button>
                             </div>
                             <div class="chap"><span class="num">02</span>
                                 <h3>Our first date</h3>
-                                <p>Cold coffee, warm conversation, and hours that felt like minutes.</p>
+                                <p>Cold coffee, warm conversation, and hours that felt like minutes.</p><button
+                                    class="btn outline chap-btn" data-page="2">Open this chapter <svg
+                                        viewBox="0 0 24 24">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg></button>
                             </div>
                             <div class="chap"><span class="num">03</span>
                                 <h3>Late-night promises</h3>
                                 <p>Under city lights we spoke softly about everything and nothing &mdash; and I knew.
-                                </p>
+                                </p><button class="btn outline chap-btn" data-page="3">Open this chapter <svg
+                                        viewBox="0 0 24 24">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg></button>
                             </div>
                             <div class="chap"><span class="num">04</span>
                                 <h3>Home is you</h3>
                                 <p>Somewhere between the laughter and the quiet, you became my favourite place to be.
-                                </p>
+                                </p><button class="btn outline chap-btn" data-page="4">Open this chapter <svg
+                                        viewBox="0 0 24 24">
+                                        <path d="M5 12h14M13 6l6 6-6 6" />
+                                    </svg></button>
                             </div>
                         </div>
                     </div>
@@ -2499,6 +3039,232 @@
         </section>
     </main>
 
+    <div class="page" id="page1" data-n="1" aria-label="Chapter 01">
+        <div class="pbar">
+            <button class="pback" data-close><svg viewBox="0 0 24 24">
+                    <path d="M19 12H5M11 6l-6 6 6 6" />
+                </svg>Back</button>
+            <button class="music pmusic" aria-label="Play or pause this chapter's music"><span
+                    class="eq"><i></i><i></i><i></i></span></button>
+        </div>
+        <header class="phero">
+            <div class="pic" style="--i:var(--img-p1-0)"></div>
+            <div class="veil"></div>
+            <div class="ptitle"><span class="tag">Chapter 01</span>
+                <h2>The first <em>hello</em></h2>
+                <p>Some moments begin quietly &mdash; a glance, a smile, a heartbeat out of rhythm.</p>
+            </div>
+        </header>
+        <section class="pbody">
+            <div class="wrap p1-grid">
+                <div class="letter rv"><span class="tag">A note, folded small</span>
+                    <p>I didn't know an ordinary evening could rearrange my whole life. You walked in, the room went
+                        soft around the edges, and every sensible thought I had quietly left.</p>
+                    <p>I smiled because I couldn't help it &mdash; and you smiled back, and that was all it took.</p>
+                    <p>If I could go back, I'd choose that moment again. Every single time.</p>
+                    <span class="sign">&mdash; yours, always</span>
+                </div>
+                <div class="pols">
+                    <figure class="pol" data-r="-6" data-f="1">
+                        <div class="ph">
+                            <div class="pic" style="--i:var(--img-p1-1)"></div>
+                        </div>
+                        <figcaption>The room</figcaption>
+                    </figure>
+                    <figure class="pol" data-r="5" data-f="1.6">
+                        <div class="ph">
+                            <div class="pic" style="--i:var(--img-p1-2)"></div>
+                        </div>
+                        <figcaption>The smile</figcaption>
+                    </figure>
+                    <figure class="pol" data-r="-3" data-f=".7">
+                        <div class="ph">
+                            <div class="pic" style="--i:var(--img-p1-3)"></div>
+                        </div>
+                        <figcaption>The moment</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <div class="pend"><button class="btn outline" data-close>Back to our story <svg viewBox="0 0 24 24">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></button></div>
+    </div>
+    <div class="page" id="page2" data-n="2" aria-label="Chapter 02">
+        <div class="pbar">
+            <button class="pback" data-close><svg viewBox="0 0 24 24">
+                    <path d="M19 12H5M11 6l-6 6 6 6" />
+                </svg>Back</button>
+            <button class="music pmusic" aria-label="Play or pause this chapter's music"><span
+                    class="eq"><i></i><i></i><i></i></span></button>
+        </div>
+        <header class="phero">
+            <div class="pic" style="--i:var(--img-p2-0)"></div>
+            <div class="veil"></div>
+            <div class="ptitle"><span class="tag">Chapter 02</span>
+                <h2>Our first <em>date</em></h2>
+                <p>Cold coffee, warm conversation, and hours that felt like minutes.</p>
+            </div>
+        </header>
+        <section class="pbody">
+            <div class="wrap">
+                <div class="p2-grid">
+                    <div class="p2-img">
+                        <div class="pic" style="--i:var(--img-p2-1)"></div>
+                    </div>
+                    <ol class="sched">
+                        <li class="rv"><time>7:00 pm</time>
+                            <h3>Two lattes</h3>
+                            <p>We said we would stay for ten minutes. The coffee went cold; we never noticed.</p>
+                        </li>
+                        <li class="rv"><time>8:15 pm</time>
+                            <h3>A walk by the river</h3>
+                            <p>Our shoulders brushed twice. Neither of us said a word about it.</p>
+                        </li>
+                        <li class="rv"><time>9:30 pm</time>
+                            <h3>Dinner under fairy lights</h3>
+                            <p>You stole the last bite and called it a tradition. It has been one ever since.</p>
+                        </li>
+                        <li class="rv"><time>11:00 pm</time>
+                            <h3>The goodbye that wasn't</h3>
+                            <p>Five more minutes became fifty. Somehow, the night still felt too short.</p>
+                        </li>
+                    </ol>
+                </div>
+                <div class="p2-row">
+                    <div class="ph rv z">
+                        <div class="pic" style="--i:var(--img-p2-2)"></div>
+                    </div>
+                    <div class="ph rv z" style="--d:.15s">
+                        <div class="pic" style="--i:var(--img-p2-3)"></div>
+                    </div>
+                </div>
+                <div class="menu rv">
+                    <h3>What we ordered</h3>
+                    <p>Two lattes &middot; One slice of cake &middot; Two forks<br>All the time in the world</p>
+                </div>
+            </div>
+        </section>
+        <div class="pend"><button class="btn outline" data-close>Back to our story <svg viewBox="0 0 24 24">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></button></div>
+    </div>
+    <div class="page" id="page3" data-n="3" aria-label="Chapter 03">
+        <div class="pbar">
+            <button class="pback" data-close><svg viewBox="0 0 24 24">
+                    <path d="M19 12H5M11 6l-6 6 6 6" />
+                </svg>Back</button>
+            <button class="music pmusic" aria-label="Play or pause this chapter's music"><span
+                    class="eq"><i></i><i></i><i></i></span></button>
+        </div>
+        <header class="phero">
+            <div class="pic" style="--i:var(--img-p3-0)"></div>
+            <div class="veil"></div>
+            <div class="ptitle"><span class="tag">Chapter 03</span>
+                <h2>Late-night <em>promises</em></h2>
+                <p>Under city lights we spoke softly about everything and nothing &mdash; and I knew.</p>
+            </div>
+        </header>
+        <section class="pbody p3">
+            <div class="wrap">
+                <ol class="promises">
+                    <li class="rv l"><span class="pn">01</span>
+                        <p>I'll always save you the last bite.</p>
+                    </li>
+                    <li class="rv r"><span class="pn">02</span>
+                        <p>I'll hold your hand through every storm.</p>
+                    </li>
+                    <li class="rv l"><span class="pn">03</span>
+                        <p>I'll laugh at your jokes, even the bad ones.</p>
+                    </li>
+                    <li class="rv r"><span class="pn">04</span>
+                        <p>I'll choose you on the easy days and the hard ones.</p>
+                    </li>
+                    <li class="rv l"><span class="pn">05</span>
+                        <p>I'll love you louder than the world gets.</p>
+                    </li>
+                </ol>
+            </div>
+            <div class="lights-wrap">
+                <div class="lights">
+                    <div class="ph">
+                        <div class="pic" style="--i:var(--img-p3-1)"></div>
+                    </div>
+                    <div class="ph">
+                        <div class="pic" style="--i:var(--img-p3-2)"></div>
+                    </div>
+                    <div class="ph">
+                        <div class="pic" style="--i:var(--img-p3-3)"></div>
+                    </div>
+                    <div class="ph">
+                        <div class="pic" style="--i:var(--img-p3-1)"></div>
+                    </div>
+                </div>
+                <p class="lights-cap">City lights, quiet hearts</p>
+            </div>
+        </section>
+        <div class="pend"><button class="btn outline" data-close>Back to our story <svg viewBox="0 0 24 24">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></button></div>
+    </div>
+    <div class="page" id="page4" data-n="4" aria-label="Chapter 04">
+        <div class="pbar">
+            <button class="pback" data-close><svg viewBox="0 0 24 24">
+                    <path d="M19 12H5M11 6l-6 6 6 6" />
+                </svg>Back</button>
+            <button class="music pmusic" aria-label="Play or pause this chapter's music"><span
+                    class="eq"><i></i><i></i><i></i></span></button>
+        </div>
+        <header class="phero">
+            <div class="pic" style="--i:var(--img-p4-0)"></div>
+            <div class="veil"></div>
+            <div class="ptitle"><span class="tag">Chapter 04</span>
+                <h2>Home is <em>you</em></h2>
+                <p>Somewhere between the laughter and the quiet, you became my favourite place to be.</p>
+            </div>
+        </header>
+        <section class="pbody">
+            <div class="wrap">
+                <div class="mosaic">
+                    <div class="ph a rv z" style="--d:0s">
+                        <div class="pic" style="--i:var(--img-p4-1)"></div>
+                    </div>
+                    <div class="ph b rv z" style="--d:0.1s">
+                        <div class="pic" style="--i:var(--img-p4-2)"></div>
+                    </div>
+                    <div class="ph c rv z" style="--d:0.2s">
+                        <div class="pic" style="--i:var(--img-p4-3)"></div>
+                    </div>
+                    <div class="ph d rv z" style="--d:0.1s">
+                        <div class="pic" style="--i:var(--img-p4-4)"></div>
+                    </div>
+                    <div class="ph e rv z" style="--d:0.2s">
+                        <div class="pic" style="--i:var(--img-p4-5)"></div>
+                    </div>
+                    <div class="ph f rv z" style="--d:0.3s">
+                        <div class="pic" style="--i:var(--img-p4-6)"></div>
+                    </div>
+                </div>
+                <p class="p4-quote rv b">Home isn't a place. It's the way my heart exhales when <em>you</em> walk in.
+                </p>
+                <p class="p4-sub rv">And every day, I come home to you</p>
+            </div>
+        </section>
+        <div class="pend"><button class="btn outline" data-close>Back to our story <svg viewBox="0 0 24 24">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></button></div>
+    </div>
+    <div id="cover">
+        <div class="blinds"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><svg class="hcover"
+            viewBox="0 0 24 24">
+            <use href="#hrt" />
+        </svg>
+    </div>
+    <audio id="pm1" src="music1.mp3" loop preload="none"></audio>
+    <audio id="pm2" src="music2.mp3" loop preload="none"></audio>
+    <audio id="pm3" src="music3.mp3" loop preload="none"></audio>
+    <audio id="pm4" src="music4.mp3" loop preload="none"></audio>
+
     <script>
         (() => {
             const CODE = '1005';
@@ -2641,10 +3407,12 @@
             const root = document.documentElement;
             const bgm = $('#bgm'), mus = $('#music');
             bgm.volume = 0;
-            let fade;
-            function fadeTo(v) { clearInterval(fade); fade = setInterval(() => { const d = v - bgm.volume; if (Math.abs(d) < .03) { bgm.volume = v; clearInterval(fade); if (!v) bgm.pause() } else bgm.volume = clamp(bgm.volume + Math.sign(d) * .03, 0, 1) }, 60) }
-            function musicOn() { bgm.play().then(() => { mus.classList.add('on'); fadeTo(.7) }).catch(() => mus.classList.remove('on')) }
-            mus.addEventListener('click', () => { if (bgm.paused) musicOn(); else { mus.classList.remove('on'); fadeTo(0) } });
+            function fade(a, v) {
+                clearInterval(a._f);
+                a._f = setInterval(() => { const d = v - a.volume; if (Math.abs(d) < .03) { a.volume = v; clearInterval(a._f); if (!v) a.pause() } else a.volume = clamp(a.volume + Math.sign(d) * .03, 0, 1) }, 60);
+            }
+            function musicOn() { bgm.play().then(() => { mus.classList.add('on'); fade(bgm, .7) }).catch(() => mus.classList.remove('on')) }
+            mus.addEventListener('click', () => { if (mus.classList.contains('on')) { mus.classList.remove('on'); fade(bgm, 0) } else musicOn() });
             window.__startSite = () => { root.classList.remove('locked'); root.classList.add('go'); musicOn() };
 
             $('#mode').addEventListener('click', () => {
@@ -2671,7 +3439,8 @@
             });
             const dotEls = $$('a', dotsNav);
 
-            let cur = scrollY, tar = scrollY, lastY = scrollY, vel = 0;
+            let cur = scrollY, tar = scrollY, lastY = scrollY, vel = 0, current = null, busy = false, pushed = false, mainWas = false, pcur = 0, ptar = 0, pageLast = 0;
+            const curPg = () => current ? document.getElementById('page' + current) : null;
             const maxY = () => document.documentElement.scrollHeight - innerHeight;
             if (smoothOn) {
                 addEventListener('wheel', e => {
@@ -2679,6 +3448,7 @@
                     e.preventDefault();
                     if (root.classList.contains('locked')) return;
                     const d = e.deltaMode === 1 ? 34 : e.deltaMode === 2 ? innerHeight : 1;
+                    if (current) { const pg = curPg(); ptar = clamp(ptar + e.deltaY * d, 0, pg.scrollHeight - pg.clientHeight); return }
                     tar = clamp(tar + e.deltaY * d, 0, maxY());
                 }, { passive: false });
                 addEventListener('scroll', () => { if (Math.abs(scrollY - cur) > 2) { cur = tar = scrollY } });
@@ -2746,7 +3516,7 @@
                 e.target.classList.add('in'); io.unobserve(e.target);
                 if (e.target.classList.contains('stat')) count($('b', e.target));
             }), { threshold: .16, rootMargin: '0px 0px -6% 0px' });
-            $$('.rv,.tl-item').forEach(el => io.observe(el));
+            $$('main .rv,main .tl-item').forEach(el => io.observe(el));
             function count(b) {
                 const to = +b.dataset.to, plus = b.dataset.plus, t0 = performance.now(), dur = 2200;
                 (function step(n) {
@@ -2764,6 +3534,99 @@
                 }
                 $('#thanks').classList.add('on');
             });
+
+
+            const pageEls = $$('.page'), cover = $('#cover'), blinds = $$('#cover .blinds i'), hcover = $('#cover .hcover');
+            const pAud = {};[1, 2, 3, 4].forEach(n => { pAud[n] = $('#pm' + n); pAud[n].volume = 0 });
+            const EZ = 'cubic-bezier(.76,0,.24,1)';
+            const maxR = (x, y) => Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+            const showCover = c => { cover.className = c; cover.style.display = 'block' };
+            const hideCover = () => { cover.style.display = 'none'; cover.className = '' };
+            const T = {
+                1: async (pg, x, y) => {
+                    pg.classList.add('open');
+                    await pg.animate([{ clipPath: `circle(0px at ${x}px ${y}px)` }, { clipPath: `circle(${maxR(x, y)}px at ${x}px ${y}px)` }], { duration: 1300, easing: EZ }).finished;
+                },
+                2: async pg => {
+                    pg.classList.add('open');
+                    await pg.animate([{ clipPath: 'inset(100% 0 0 0 round 80px 80px 0 0)', transform: 'translateY(80px)' }, { clipPath: 'inset(0 0 0 0 round 0)', transform: 'translateY(0)' }], { duration: 1200, easing: EZ }).finished;
+                },
+                3: async pg => {
+                    showCover('blinds-on');
+                    blinds.forEach(b => b.style.transformOrigin = 'top');
+                    await Promise.all(blinds.map((b, i) => b.animate([{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { duration: 650, delay: i * 80, easing: EZ, fill: 'forwards' }).finished));
+                    pg.classList.add('open');
+                    blinds.forEach(b => b.style.transformOrigin = 'bottom');
+                    await Promise.all(blinds.map((b, i) => b.animate([{ transform: 'scaleY(1)' }, { transform: 'scaleY(0)' }], { duration: 650, delay: i * 80, easing: EZ, fill: 'forwards' }).finished));
+                    blinds.forEach(b => b.getAnimations().forEach(a => a.cancel())); hideCover();
+                },
+                4: async pg => {
+                    showCover('heart-on');
+                    await hcover.animate([{ transform: 'translate(-50%,-50%) scale(0)' }, { transform: 'translate(-50%,-50%) scale(60)' }], { duration: 1100, easing: 'cubic-bezier(.7,0,.84,0)', fill: 'forwards' }).finished;
+                    pg.classList.add('open');
+                    await hcover.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 800, easing: 'ease', fill: 'forwards' }).finished;
+                    hcover.getAnimations().forEach(a => a.cancel()); hideCover();
+                }
+            };
+            function pagePlay(n) {
+                const a = pAud[n], b = $('.pmusic', $('#page' + n));
+                a.play().then(() => { b.classList.add('on'); fade(a, .75) }).catch(() => b.classList.remove('on'));
+            }
+            async function openPage(n, x, y) {
+                if (current || busy) return;
+                busy = true; current = n;
+                const pg = $('#page' + n);
+                pg.scrollTop = 0; pcur = ptar = pageLast = 0;
+                $$('.rv', pg).forEach(el => { el.classList.remove('in'); io.observe(el) });
+                mainWas = mus.classList.contains('on');
+                if (mainWas) { mus.classList.remove('on'); fade(bgm, 0) }
+                root.classList.add('page-open');
+                try { history.pushState({ p: n }, '', '#chapter-' + n); pushed = true } catch (e) { pushed = false }
+                pagePlay(n);
+                await T[n](pg, x, y);
+                busy = false;
+            }
+            async function closePage() {
+                if (!current || busy) return;
+                busy = true; pushed = false;
+                const n = current, pg = $('#page' + n);
+                fade(pAud[n], 0); $('.pmusic', pg).classList.remove('on');
+                const o = { duration: 900, easing: EZ, fill: 'forwards' };
+                let a;
+                if (n === 1) a = pg.animate([{ clipPath: `circle(${maxR(innerWidth / 2, innerHeight / 2)}px at 50% 50%)` }, { clipPath: 'circle(0px at 50% 50%)' }], o);
+                else if (n === 2) a = pg.animate([{ clipPath: 'inset(0 0 0 0 round 0)', transform: 'none' }, { clipPath: 'inset(100% 0 0 0 round 80px 80px 0 0)', transform: 'translateY(80px)' }], o);
+                else a = pg.animate([{ opacity: 1, filter: 'blur(0)', transform: 'scale(1)' }, { opacity: 0, filter: 'blur(14px)', transform: 'scale(1.06)' }], o);
+                await a.finished;
+                pg.classList.remove('open'); a.cancel();
+                root.classList.remove('page-open');
+                current = null; busy = false;
+                if (mainWas) musicOn();
+            }
+            function requestClose() { if (!current || busy) return; if (pushed) history.back(); else closePage() }
+            addEventListener('popstate', () => { if (current) closePage() });
+            addEventListener('keydown', e => { if (e.key === 'Escape') requestClose() });
+            $$('.chap-btn').forEach(b => b.addEventListener('click', e => {
+                const r = b.getBoundingClientRect();
+                openPage(+b.dataset.page, e.clientX || r.left + r.width / 2, e.clientY || r.top + r.height / 2);
+            }));
+            $$('[data-close]').forEach(b => b.addEventListener('click', requestClose));
+            $$('.pmusic').forEach(b => b.addEventListener('click', () => {
+                const n = +b.closest('.page').dataset.n;
+                if (b.classList.contains('on')) { b.classList.remove('on'); fade(pAud[n], 0) } else pagePlay(n);
+            }));
+            pageEls.forEach(pg => pg.addEventListener('scroll', () => { if (Math.abs(pg.scrollTop - pcur) > 2) { pcur = ptar = pg.scrollTop } }));
+            function pageFx(pg, vh) {
+                const n = +pg.dataset.n, st = pg.scrollTop;
+                const hp = $('.phero .pic', pg), tt = $('.ptitle', pg);
+                hp.style.transform = `translate3d(0,${st * .3}px,0) scale(${1 + clamp(st / vh) * .1})`;
+                tt.style.transform = `translate3d(0,${-st * .12}px,0)`; tt.style.opacity = clamp(1 - st / (vh * .6));
+                if (n === 1) {
+                    const cr = $('.pols', pg).getBoundingClientRect(), t = (cr.top + cr.height / 2 - vh / 2) / vh;
+                    $$('.pol', pg).forEach(el => { const f = +el.dataset.f; el.style.transform = `translate3d(0,${-t * 50 * f}px,0) rotate(${+el.dataset.r + t * 5 * f}deg)` });
+                }
+                if (n === 2) $('.p2-img .pic', pg).style.transform = `translate3d(0,${-st * .04}px,0) scale(1.12)`;
+                if (n === 3) { const b = $('.lights', pg), r = b.parentElement.getBoundingClientRect(); b.style.transform = `translate3d(${(.5 - clamp((vh - r.top) / (vh + r.height))) * 180}px,0,0)` }
+            }
 
             const heroBg = $('#heroBg'), heroIn = $('#heroIn'), hero = $('#hero');
             const archClip = $('#archClip'), archPic = $('#archPic'), arch = $('#arch'), wds = $$('.wd'), wordsEl = $('#words');
@@ -2786,15 +3649,18 @@
                     if (Math.abs(tar - cur) < .15) cur = tar;
                     if (Math.abs(scrollY - cur) > .01) scrollTo(0, cur);
                 }
+                const pg = curPg();
+                if (pg && smoothOn) { pcur = lerp(pcur, ptar, .085); if (Math.abs(ptar - pcur) < .15) pcur = ptar; if (Math.abs(pg.scrollTop - pcur) > .01) pg.scrollTop = pcur }
                 const y = smoothOn ? cur : scrollY, vh = innerHeight, vw = innerWidth;
-                vel = lerp(vel, y - lastY, .25); lastY = y;
+                const pgs = pg ? pg.scrollTop : 0;
+                vel = lerp(vel, pg ? pgs - pageLast : y - lastY, .25); lastY = y; pageLast = pgs;
 
                 barFill.style.transform = `scaleX(${maxY() > 0 ? clamp(y / maxY()) : 0})`;
 
                 if (fine) {
                     rx = lerp(rx, mx, .17); ry = lerp(ry, my, .17);
                     const dx = mx - rx, dy = my - ry, sp = Math.hypot(dx, dy), av = Math.abs(vel);
-                    ring.style.transform = `translate3d(${rx}px,${ry}px,0) rotate(${clamp(dx * .7, -28, 28)}deg) scale(${1 + Math.min(sp * .012 + av * .02, .6)})`;
+                    ring.style.transform = `translate3d(${rx}px,${ry}px,0) rotate(${clamp(dx * .7, -28, 28)}deg) scale(${1 + Math.min(sp * .008 + av * .012, .4)})`;
                     const fast = av > 6;
                     ring.classList.toggle('fast', fast);
                     if (av > 12 && now - lastScrollHeart > 100) {
@@ -2805,6 +3671,8 @@
                     lastScrollHeart = now;
                     heart(Math.random() * vw, vh * (Math.random() > .5 ? .85 : .2), { rise: 100, sp: 60, s: 12 + Math.random() * 12 });
                 }
+
+                if (pg) { pageFx(pg, vh); requestAnimationFrame(frame); return }
 
                 if (y < vh * 1.4) {
                     hero.style.visibility = '';
