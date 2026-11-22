@@ -913,7 +913,8 @@
         #gallery .pin {
             display: flex;
             flex-direction: column;
-            justify-content: center
+            justify-content: flex-end;
+            --ch: clamp(200px, calc(100svh - 23rem), 480px)
         }
 
         .ghost {
@@ -953,16 +954,17 @@
             position: relative;
             display: flex;
             gap: clamp(1.2rem, 3vw, 3rem);
-            align-items: center;
+            align-items: flex-end;
             width: max-content;
-            padding: 6vh 10vw 0 clamp(1.25rem, 6vw, 6rem);
+            padding: 0 10vw clamp(4.2rem, 11vh, 6rem) clamp(1.25rem, 6vw, 6rem);
             will-change: transform
         }
 
         .card {
             position: relative;
             flex: none;
-            width: clamp(230px, 25vw, 350px);
+            width: min(25vw, calc(var(--ch)*.75));
+            min-width: min(60vw, calc(var(--ch)*.75));
             aspect-ratio: 3/4;
             border-radius: 20px;
             overflow: hidden;
@@ -972,11 +974,7 @@
         }
 
         .card:nth-child(even) {
-            margin-top: 14vh
-        }
-
-        .card:nth-child(odd) {
-            margin-bottom: 8vh
+            margin-bottom: clamp(0px, 4.5vh, 2.5rem)
         }
 
         .card .pic {
@@ -3168,6 +3166,73 @@
                 display: none
             }
         }
+
+        @media(max-height:620px) {
+            .g-head {
+                top: 3.6rem
+            }
+
+            .g-head p {
+                display: none
+            }
+
+            .g-head h2 {
+                font-size: clamp(1.6rem, 4vw, 2.4rem)
+            }
+        }
+
+        .bfly {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: clamp(44px, 5.6vw, 70px);
+            aspect-ratio: 1;
+            z-index: 7;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity .6s;
+            will-change: transform
+        }
+
+        .bfly.on {
+            opacity: 1
+        }
+
+        .bfly svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            filter: drop-shadow(0 0 4px var(--n1)) drop-shadow(0 0 12px var(--n1))
+        }
+
+        .bfly .w {
+            transform-box: fill-box;
+            animation: flap var(--f, .38s) ease-in-out infinite alternate
+        }
+
+        .bfly .wl {
+            transform-origin: 100% 50%
+        }
+
+        .bfly .wr {
+            transform-origin: 0 50%;
+        }
+
+        @keyframes flap {
+            from {
+                transform: scaleX(1)
+            }
+
+            to {
+                transform: scaleX(.18)
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            .bfly {
+                display: none
+            }
+        }
     </style>
 </head>
 
@@ -3432,6 +3497,38 @@
                 <h2>How we got <em>here</em></h2>
             </div>
             <div class="tl" id="tl">
+                <div class="bfly" id="bfly" aria-hidden="true"><svg viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="bw1" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="var(--n1)" stop-opacity=".75" />
+                                <stop offset="1" stop-color="var(--n2)" stop-opacity=".55" />
+                            </linearGradient>
+                            <linearGradient id="bw2" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="var(--n2)" stop-opacity=".7" />
+                                <stop offset="1" stop-color="var(--n1)" stop-opacity=".4" />
+                            </linearGradient>
+                        </defs>
+                        <g class="w wl">
+                            <path d="M50 46C38 18 10 8 6 26c-3 14 14 24 44 22z" fill="url(#bw1)" stroke="#fff"
+                                stroke-opacity=".8" stroke-width="1.2" />
+                            <path d="M50 52C34 54 16 62 22 78c5 12 22 2 28-26z" fill="url(#bw2)" stroke="#fff"
+                                stroke-opacity=".8" stroke-width="1.2" />
+                            <circle cx="24" cy="28" r="3.2" fill="#fff" fill-opacity=".75" />
+                            <circle cx="29" cy="70" r="2.4" fill="#fff" fill-opacity=".7" />
+                        </g>
+                        <g class="w wr">
+                            <path d="M50 46c12-28 40-38 44-20 3 14-14 24-44 22z" fill="url(#bw1)" stroke="#fff"
+                                stroke-opacity=".8" stroke-width="1.2" />
+                            <path d="M50 52c16 2 34 10 28 26-5 12-22 2-28-26z" fill="url(#bw2)" stroke="#fff"
+                                stroke-opacity=".8" stroke-width="1.2" />
+                            <circle cx="76" cy="28" r="3.2" fill="#fff" fill-opacity=".75" />
+                            <circle cx="71" cy="70" r="2.4" fill="#fff" fill-opacity=".7" />
+                        </g>
+                        <path d="M50 30c-1 14-1 38 0 50" stroke="#fff" stroke-width="4.5" stroke-linecap="round"
+                            opacity=".95" />
+                        <path d="M50 32c-4-9-9-14-14-16M50 32c4-9 9-14 14-16" stroke="#fff" stroke-width="1.4"
+                            fill="none" stroke-linecap="round" />
+                    </svg></div>
                 <div class="tl-line"><b id="tlFill"></b></div>
                 <article class="tl-item"><i class="node"></i>
                     <div class="tl-card">
@@ -4176,7 +4273,27 @@
             })();
             const gal = $('#gallery'), gTrack = $('#gTrack'), ghost = $('#ghost'), gHead = $('#gHead'), cards = $$('.card');
             const quote = $('#quote'), qWrap = $('#qWrap'), qBg = $('#qBg'), qLines = $$('#qText .ln span');
-            const tl = $('#tl'), tlFill = $('#tlFill');
+            const tl = $('#tl'), tlFill = $('#tlFill'), bf = $('#bfly');
+            let bp = 0, bx = 0, by = 0, bpp = 0, bAng = 0;
+            function butterfly(tr, vh) {
+                const items = $$('.thumb', tl); if (!bf || !items.length) return;
+                const pts = [{ x: tl.offsetWidth / 2, y: -30 }];
+                items.forEach(t => { const r = t.getBoundingClientRect(); pts.push({ x: r.left - tr.left + r.width * .5, y: r.top - tr.top + r.height * .45 }) });
+                pts.push({ x: tl.offsetWidth / 2, y: tr.height + 10 });
+                const tar = clamp((vh * .62 - tr.top) / (tr.height + vh * .1)) * (pts.length - 1);
+                bp += (tar - bp) * .06;
+                const i = Math.min(pts.length - 2, Math.max(0, bp | 0)), t = bp - i, e = t * t * (3 - 2 * t);
+                const A = pts[i], B = pts[i + 1], dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy) || 1;
+                const w = Math.sin(t * Math.PI) * Math.min(70, L * .22) * (i % 2 ? -1 : 1);
+                const x = A.x + dx * e + (-dy / L) * w + Math.sin(now2() * .0021) * 8, y = A.y + dy * e + (dx / L) * w + Math.sin(now2() * .003) * 6;
+                const v = Math.abs(bp - bpp); bpp = bp;
+                const ang = clamp((x - bx) * 2.2, -1, 1) * 28; bAng += (ang - bAng) * .1; bx = x; by = y;
+                const sz = bf.offsetWidth / 2;
+                bf.style.transform = `translate3d(${x - sz}px,${y - sz}px,0) rotate(${bAng}deg)`;
+                bf.style.setProperty('--f', (v > .002 ? .16 : .34) + 's');
+                bf.classList.toggle('on', tr.top < vh * .9 && tr.bottom > vh * .1);
+            }
+            const now2 = () => performance.now();
             const fin = $('#finale'), fReveal = $('#fReveal'), fBg = $('#fBg'), m1 = $('#m1'), m2 = $('#m2'), fIn = $('#fIn'), gCount = $('#gCount'), gBar = $('#gBar'), qSlit = $('#qSlit');
             const barFill = $('#barFill');
             const N = 4;
@@ -4306,7 +4423,7 @@
                 }
 
                 const tr = tl.getBoundingClientRect();
-                if (tr.top < vh && tr.bottom > 0) tlFill.style.transform = `scaleY(${clamp((vh * .55 - tr.top) / tr.height)})`;
+                if (tr.top < vh && tr.bottom > 0) { tlFill.style.transform = `scaleY(${clamp((vh * .55 - tr.top) / tr.height)})`; butterfly(tr, vh) }
 
                 const fr = fin.getBoundingClientRect();
                 if (fr.top < vh && fr.bottom > 0) {
