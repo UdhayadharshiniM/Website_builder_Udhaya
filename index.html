@@ -13,7 +13,7 @@
     <script>
         (() => {
             let t; try { t = localStorage.getItem('loveTheme') } catch (e) { }
-            if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            if (!t) t = 'dark';
             document.documentElement.dataset.theme = t;
         })();
     </script>
@@ -203,7 +203,8 @@
         }
 
         .brand,
-        .mode {
+        .mode,
+        .music {
             background: var(--card);
             border: 1px solid var(--line);
             backdrop-filter: blur(16px);
@@ -228,6 +229,63 @@
 
         .mode:hover {
             transform: rotate(25deg) scale(1.08)
+        }
+
+        .tools {
+            display: flex;
+            gap: .6rem
+        }
+
+        .music {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            color: var(--ink);
+            transition: transform .5s var(--ease)
+        }
+
+        .music:hover {
+            transform: scale(1.1)
+        }
+
+        .eq {
+            display: flex;
+            gap: 3px;
+            align-items: flex-end;
+            height: 16px
+        }
+
+        .eq i {
+            width: 3px;
+            height: 4px;
+            border-radius: 2px;
+            background: currentColor;
+            transition: height .3s
+        }
+
+        .music.on .eq i {
+            animation: eq 1s ease-in-out infinite
+        }
+
+        .music.on .eq i:nth-child(2) {
+            animation-delay: .2s
+        }
+
+        .music.on .eq i:nth-child(3) {
+            animation-delay: .4s
+        }
+
+        @keyframes eq {
+
+            0%,
+            100% {
+                height: 4px
+            }
+
+            50% {
+                height: 16px
+            }
         }
 
         .mode svg {
@@ -331,37 +389,41 @@
         }
 
         .cur-dot {
-            width: 8px;
-            height: 8px;
-            margin: -4px 0 0 -4px;
-            border-radius: 50%;
-            background: var(--rose)
+            width: 7px;
+            height: 7px;
+            margin: -3.5px 0 0 -3.5px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            box-shadow: 0 0 10px var(--gold)
         }
 
         .cur-ring {
-            width: 40px;
-            height: 40px;
-            margin: -20px 0 0 -20px
+            width: 34px;
+            height: 34px;
+            margin: -17px 0 0 -17px
         }
 
-        .cur-ring i {
-            display: block;
+        .cur-ring svg {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
-            border: 1.5px solid var(--rose2);
-            transition: transform .5s var(--ease), background .4s, box-shadow .4s
+            overflow: visible;
+            fill: none;
+            stroke: var(--rose);
+            stroke-width: 1.6;
+            stroke-linejoin: round;
+            transition: transform .5s var(--ease), fill .4s, filter .4s
         }
 
-        .cur-ring.hot i {
-            transform: scale(1.9);
-            background: rgba(255, 92, 133, .16);
-            border-color: transparent
+        .cur-ring.hot svg {
+            transform: scale(1.6);
+            fill: var(--rose);
+            fill-opacity: .35
         }
 
-        .cur-ring.fast i {
-            box-shadow: 0 0 22px var(--rose), inset 0 0 12px rgba(255, 92, 133, .5);
-            border-width: 2.5px
+        .cur-ring.fast svg {
+            fill: var(--rose);
+            fill-opacity: .6;
+            filter: drop-shadow(0 0 8px var(--rose))
         }
 
         @media(hover:hover) and (pointer:fine) {
@@ -1401,10 +1463,6 @@
             pointer-events: none
         }
 
-        #lockApp .homebar {
-            cursor: pointer
-        }
-
         html.locked,
         html.locked body {
             overflow: hidden;
@@ -1773,20 +1831,6 @@
             }
         }
 
-        #lockApp .homebar {
-            position: absolute;
-            bottom: 9px;
-            left: 50%;
-            width: 138px;
-            height: 5px;
-            margin-left: -69px;
-            border-radius: 3px;
-            background: var(--ink);
-            opacity: .9;
-            z-index: 9;
-            cursor: pointer
-        }
-
         @media(max-width:639px) {
             #lockApp .bottom {
                 padding-bottom: 38px
@@ -2070,22 +2114,29 @@
     <div class="bar"><span id="barFill"></span></div>
     <header class="top">
         <a class="brand" href="#hero">Forever &amp; Always</a>
-        <button class="mode" id="mode" aria-label="Switch light or dark mode">
-            <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z" />
-            </svg>
-            <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                stroke-linecap="round">
-                <circle cx="12" cy="12" r="4.2" />
-                <path
-                    d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" />
-            </svg>
-        </button>
+        <div class="tools">
+            <button class="music" id="music" aria-label="Toggle music"><span
+                    class="eq"><i></i><i></i><i></i></span></button>
+            <button class="mode" id="mode" aria-label="Switch light or dark mode">
+                <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z" />
+                </svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round">
+                    <circle cx="12" cy="12" r="4.2" />
+                    <path
+                        d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" />
+                </svg>
+            </button>
+        </div>
     </header>
     <nav class="dots" id="dots" aria-label="Sections"></nav>
+    <audio id="bgm" src="music.mp3" loop preload="auto"></audio>
     <div class="cur">
-        <div class="cur-ring" id="ring"><i></i></div>
+        <div class="cur-ring" id="ring"><svg viewBox="0 0 24 24">
+                <use href="#hrt" />
+            </svg></div>
         <div class="cur-dot" id="dot"></div>
     </div>
     <div class="fx" id="fx"></div>
@@ -2177,7 +2228,6 @@
                 <div class="pfoot"><button id="hint">Hint</button><button id="cancel">Cancel</button></div>
             </section>
 
-            <div class="homebar" id="homebar"></div>
             <div class="welcome" id="welcome"><svg viewBox="0 0 24 24">
                     <use href="#hrt" />
                 </svg>
@@ -2516,7 +2566,6 @@
                 sy = null; dy = 0;
             });
             $('#swipe').addEventListener('click', openPass);
-            $('#homebar').addEventListener('click', () => phone.classList.contains('passing') ? closePass() : openPass());
 
             const letters = { 2: 'ABC', 3: 'DEF', 4: 'GHI', 5: 'JKL', 6: 'MNO', 7: 'PQRS', 8: 'TUV', 9: 'WXYZ' };
             const pad = $('#pad');
@@ -2590,7 +2639,13 @@
             const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
             const smoothOn = fine && !reduce;
             const root = document.documentElement;
-            window.__startSite = () => { root.classList.remove('locked'); root.classList.add('go') };
+            const bgm = $('#bgm'), mus = $('#music');
+            bgm.volume = 0;
+            let fade;
+            function fadeTo(v) { clearInterval(fade); fade = setInterval(() => { const d = v - bgm.volume; if (Math.abs(d) < .03) { bgm.volume = v; clearInterval(fade); if (!v) bgm.pause() } else bgm.volume = clamp(bgm.volume + Math.sign(d) * .03, 0, 1) }, 60) }
+            function musicOn() { bgm.play().then(() => { mus.classList.add('on'); fadeTo(.7) }).catch(() => mus.classList.remove('on')) }
+            mus.addEventListener('click', () => { if (bgm.paused) musicOn(); else { mus.classList.remove('on'); fadeTo(0) } });
+            window.__startSite = () => { root.classList.remove('locked'); root.classList.add('go'); musicOn() };
 
             $('#mode').addEventListener('click', () => {
                 const t = root.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -2739,8 +2794,7 @@
                 if (fine) {
                     rx = lerp(rx, mx, .17); ry = lerp(ry, my, .17);
                     const dx = mx - rx, dy = my - ry, sp = Math.hypot(dx, dy), av = Math.abs(vel);
-                    const st = 1 + Math.min(sp * .02 + av * .025, .9);
-                    ring.style.transform = `translate3d(${rx}px,${ry}px,0) rotate(${Math.atan2(dy, dx)}rad) scale(${st},${1 / (1 + (st - 1) * .45)})`;
+                    ring.style.transform = `translate3d(${rx}px,${ry}px,0) rotate(${clamp(dx * .7, -28, 28)}deg) scale(${1 + Math.min(sp * .012 + av * .02, .6)})`;
                     const fast = av > 6;
                     ring.classList.toggle('fast', fast);
                     if (av > 12 && now - lastScrollHeart > 100) {
